@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "887950910734",
+    "project_id": "lowkey-706ed",
+    "storage_bucket": "lowkey-706ed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:887950910734:android:46e1b58d1b56a21dcde35f",
+        "android_client_info": {
+          "package_name": "com.ourapp.Lowkeyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "887950910734-o5fmk6lq0vhfj0s6nrup1pv9p24jc2ui.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCttG1ieEpYWPG8yr2n5iQgYxvy5QdTWh0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "887950910734-o5fmk6lq0vhfj0s6nrup1pv9p24jc2ui.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
