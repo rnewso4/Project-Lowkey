@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'businesses.dart';
+import 'create_new.dart';
 
 final PageController controller = PageController(initialPage: 0);
 
@@ -56,9 +57,15 @@ class _HomepageListState extends State<HomepageList> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const <Widget>[
-                    Icon(Icons.menu, size: 40),
-                    Icon(Icons.tune, size: 40)
+                  children: <Widget>[
+                    IconButton(
+                      onPressed: () { Navigator.push(
+                        context, 
+                        MaterialPageRoute(builder: (context) => const CreateNew()));
+                      },
+                      icon: const Icon(Icons.menu, size: 40)
+                    ),
+                  const Icon(Icons.tune, size: 40)
                   ],
                 ),
               ),
