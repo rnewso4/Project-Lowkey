@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'homepage_list.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -31,7 +32,7 @@ class _LoginState extends State<Login> {
             child: Center(
               child: Image(
                 height: 250,
-                image: AssetImage('lib/UI/assets/logo.png')),
+                image: AssetImage('lib/assets/logo.png')),
             ),
           ),
           Align(
@@ -110,30 +111,36 @@ class _LoginState extends State<Login> {
                       )
                       ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 30, bottom: 30),
-                    height: 40,
-                    width: 150,
-                    decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: <Color>[
-                          Color(0xffFFBAB5),
-                          Color(0xffE66B63)
-                        ],
-                      ),
-                    borderRadius: BorderRadius.all(Radius.circular(30))
+                  InkWell(
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const HomepageList())
                     ),
-                    child: const Center(
-                      child: Text(
-                        'LOGIN',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20
+                    child: Container(
+                      margin: const EdgeInsets.only(top: 30, bottom: 30),
+                      height: 40,
+                      width: 150,
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: <Color>[
+                            Color(0xffFFBAB5),
+                            Color(0xffE66B63)
+                          ],
                         ),
-                      )
+                      borderRadius: BorderRadius.all(Radius.circular(30))
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'LOGIN',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20
+                          ),
+                        )
+                      ),
                     ),
                   ),
                   Row(
