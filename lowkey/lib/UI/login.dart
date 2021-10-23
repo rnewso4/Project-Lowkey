@@ -32,7 +32,7 @@ class _LoginState extends State<Login> {
             child: Center(
               child: Image(
                 height: 250,
-                image: AssetImage('lib/assets/logo.png')),
+                image: AssetImage('lib/UI/assets/logo.png')),
             ),
           ),
           Align(

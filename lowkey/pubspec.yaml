@@ -19,3 +19,6 @@ flutter:
   uses-material-design: true
   assets: 
     - lib/UI/assets/logo.png
+    - lib/UI/assets/highland.png
+    - lib/UI/assets/reg.jpeg
+    - lib/UI/assets/rev.jpg
