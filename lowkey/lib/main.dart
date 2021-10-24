@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lowkey/UI/create_new.dart';
 import 'UI/login.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:lowkey/UI/login.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Login(),
+      home: const CreateNew(),
     );
   }
 }
