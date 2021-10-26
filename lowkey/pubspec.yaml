@@ -9,6 +9,7 @@ dependencies:
   flutter:
     sdk: flutter
   firebase_core: "1.7.0"
+  firebase_storage: "^10.0.5"
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
