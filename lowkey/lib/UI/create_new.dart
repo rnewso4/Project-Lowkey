@@ -14,18 +14,6 @@ class _CreateNewState extends State<CreateNew> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Colors.amber,
-      //   leading: IconButton(onPressed: () => Navigator.pop(context), icon: const Icon(Icons.arrow_back)),
-      //   title: const Text(
-      //     'Create new advertisement!',
-      //     style: TextStyle(
-      //       color: Colors.white,
-      //       fontWeight: FontWeight.bold,
-      //       fontSize: 20,
-      //     )
-      //   ),
-      // ),
       body: Stack(children: [
         InkWell(
           borderRadius: BorderRadius.circular(5),
