@@ -133,10 +133,11 @@ class _CreateNewState extends State<CreateNew> {
                 },
                 child: const Text('Ping db'),
               )
-            ]),
+            ]
+            ),
           ),
         ),
-      ] //children
+        ] //children
           ),
     );
   }
