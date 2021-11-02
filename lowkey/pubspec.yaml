@@ -11,6 +11,7 @@ dependencies:
   firebase_core: "1.7.0"
   firebase_storage: "^10.0.5"
   cupertino_icons: ^1.0.2
+  dots_indicator: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -19,7 +20,16 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets: 
-    - lib/UI/assets/logo.png
     - lib/UI/assets/highland.png
     - lib/UI/assets/reg.jpeg
     - lib/UI/assets/rev.jpg
+    - lib/UI/assets/logo.png
+    - lib/UI/assets/coffee.png
+    - lib/UI/assets/fizz.png
+    - lib/UI/assets/pizza.png
+    - lib/UI/assets/starbucks.jpg
+
+  fonts:
+    - family: MyFlutterApp
+      fonts:
+      - asset: lib/UI/assets/fonts/MyFlutterApp.ttf

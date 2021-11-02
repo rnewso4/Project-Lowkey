@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'deals_page.dart';
 import 'businesses.dart';
 import 'create_new.dart';
+import 'homepage_swipe.dart';
 
 final PageController controller = PageController(initialPage: 0);
 
@@ -65,7 +67,13 @@ class _HomepageListState extends State<HomepageList> {
                       },
                       icon: const Icon(Icons.menu, size: 40)
                     ),
-                  const Icon(Icons.tune, size: 40)
+                  IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context, 
+                      MaterialPageRoute(builder: (context) => const HomepageSwipe()));
+                  },
+                  icon: const Icon(Icons.tune, size: 40))
                   ],
                 ),
               ),
@@ -78,12 +86,15 @@ class _HomepageListState extends State<HomepageList> {
 
 dealsAndNewsStyle() => const TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black);
 
-tilesForDeals(String name, String logo, String description) {
+tilesForDeals(String name, String logo, String description, context) {
   return ListTile(
     leading: Image(image: AssetImage(logo), width: 70,),
     title: Text(name),
     subtitle: Text(description),
-    trailing: const Icon(Icons.more_vert)
+    trailing: const Icon(Icons.more_vert),
+    onTap: () {
+                   Navigator.of(context).push(MaterialPageRoute(builder: (context)=>DealsPage()));
+                 },
   );
 }
 
@@ -101,7 +112,7 @@ dealsView() {
     child: ListView.separated(
       padding: const EdgeInsets.all(8),
       itemCount: businesses.length,
-      itemBuilder:(context, index) => tilesForDeals(businesses[index].getName(), businesses[index].getLogo(), businesses[index].getDescription()),
+      itemBuilder:(context, index) => tilesForDeals(businesses[index].getName(), businesses[index].getLogo(), businesses[index].getDescription(), context),
       separatorBuilder: (context, index) => const SizedBox(height: 20)
     ),
   );
@@ -119,7 +130,7 @@ newsView() {
 }
 
   List<Business> businesses = <Business>[
-    Business('The Revelry', '\$5 off every coffee purchased before noon', 'lib/UI/assets/reg.jpeg'),
+    Business('The Revelry', '\$5 off every coffee purchased before noon', 'lib/UI/assets/rev.jpg'),
     Business('The Revelry', 'Our pumpkin spice pizza is back at high demand', 'lib/UI/assets/rev.jpg'),
     Business('The Revelry', 'Students get in free before midnight', 'lib/UI/assets/rev.jpg'),
     Business('Highland Coffee', '\$5 off every coffee purchased before noon', 'lib/UI/assets/highland.png'),
