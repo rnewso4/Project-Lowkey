@@ -11,6 +11,8 @@ dependencies:
   firebase_core: "1.7.0"
   firebase_storage: "^10.0.5"
   cupertino_icons: ^1.0.2
+  google_maps_flutter: ^2.1.0
+  google_maps_flutter_web: ^0.3.2
 
 dev_dependencies:
   flutter_test:
