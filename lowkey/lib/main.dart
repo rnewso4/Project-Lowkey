@@ -1,11 +1,9 @@
-//import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:lowkey/UI/create_new.dart';
 import 'UI/login.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:lowkey/UI/login.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+//import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 void main() {
   runApp(const MyApp());

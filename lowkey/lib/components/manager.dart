@@ -1,6 +1,6 @@
 import 'package:lowkey/components/business.dart';
 
-import '../Account.dart';
+import 'Account.dart';
 
 class Manager extends Account {
   String _bussinessNumber = "";

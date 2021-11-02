@@ -1,4 +1,4 @@
-import '../Account.dart';
+import 'Account.dart';
 
 class Customer extends Account {
   int priority = 0;
