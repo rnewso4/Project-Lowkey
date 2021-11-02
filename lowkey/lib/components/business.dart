@@ -1,12 +1,16 @@
-import 'package:lowkey/bussiness_category.dart';
-import 'package:lowkey/deals.dart';
-import 'package:lowkey/manager.dart';
-import 'package:lowkey/news.dart';
+import 'package:lowkey/components/bussiness_category.dart';
+import 'package:lowkey/components/deals.dart';
+import 'package:lowkey/components/manager.dart';
+import 'package:lowkey/components/news.dart';
 
 class Business {
   String _name = "";
   String _address = "";
   String _description = "";
+  int _longitude = 0;
+  int _ladtitude = 0;
+
+  late String _logo = "";
 
   late Manager _owner;
 
@@ -15,6 +19,8 @@ class Business {
   List<News> listOfNews = [];
 
   late BussinessCategory styleOfBussiness;
+
+  late int distanceFromUser;
 
   Business(String name, String address, Manager owner) {
     _name = name;
@@ -31,4 +37,10 @@ class Business {
     listOfNews.add(newNews);
     listOfNews.sort((a, b) => a.getDate().compareTo(b.getDate()));
   }
+
+  void changeLogo(String logoPath) {
+    _logo = logoPath;
+  }
+
+  void getDistance() {}
 }
