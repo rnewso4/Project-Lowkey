@@ -23,74 +23,93 @@ class _CreateNewState extends State<CreateNew> {
           ),
           onTap: () => Navigator.pop(context),
         ),
-        Align(
-          alignment: Alignment.center,
-          child: SizedBox(
-            height: 500,
-            width: 400,
-            child: Column(children: <Widget>[
-              Container(
-                height: 50,
-                width: 300,
-                margin: const EdgeInsets.all(10),
-                child: const TextField(
-                  decoration: InputDecoration(
-                    border:
-                        OutlineInputBorder(borderSide: BorderSide(width: 60)),
-                    labelText: 'Enter: whatever we enter here',
+        const Align(
+          alignment: Alignment(0.0, -0.8),
+          child: Text(
+            'Pick a category for your deal',
+            style: TextStyle(
+              fontSize: 20,
+              fontFamily: 'helvetica',
+              color: Colors.black,
+            )
+          ),
+        ),
+        Positioned(
+          top: 150,
+          left: 40,
+          child: Row(children: <Widget> [
+            InkWell(
+              child: Container(
+                height: 80,
+                width: 95,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: <Color> [
+                      Colors.brown,
+                      Colors.brown,
+                    ]
                   ),
-                  keyboardType:
-                      TextInputType.text, //whatever this is supposed to be
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const <Widget> [
+                    Icon(
+                      Icons.coffee,
+                      size: 40, 
+                      color: Colors.white,
+                    ),
+                    Text(
+                      'Coffee',
+                      style: TextStyle(
+                        fontSize: 10,
+                        fontFamily: 'helvetica',
+                        color: Colors.white,
+                      ),
+                    ),
+                  ])
+              )),
+          ],),
+        ),
+        Positioned(
+          top: 300,
+          left: 40,
+          child: Column(children: <Widget>[
+            Container(
+              height: 100,
+              width: 300,
+              margin: const EdgeInsets.all(10),
+              child: const TextField(
+                decoration: InputDecoration(
+                  border:
+                    OutlineInputBorder(borderSide: BorderSide(width: 60)),
+                      labelText: 'Title',
+                    ),
+                    keyboardType: TextInputType.text,
                 ),
               ),
               Container(
-                height: 50,
-                width: 300,
-                margin: const EdgeInsets.all(10),
-                child: const TextField(
-                  decoration: InputDecoration(
-                    border:
-                        OutlineInputBorder(borderSide: BorderSide(width: 60)),
-                    labelText: 'Enter: whatever we enter here',
-                  ),
-                  keyboardType: TextInputType.text,
-                ),
-              ),
-              Container(
-                height: 50,
+                height: 100,
                 width: 300,
                 margin: const EdgeInsets.all(10),
                 child: const TextField(
                   decoration: InputDecoration(
                     border:
                         OutlineInputBorder(borderSide: BorderSide(width: 100)),
-                    labelText: 'Enter: whatever we enter here',
+                    labelText: 'Select Date',
                   ),
                   keyboardType: TextInputType.text,
                 ),
               ),
               Container(
-                height: 50,
+                height: 100,
                 width: 300,
                 margin: const EdgeInsets.all(10),
                 child: const TextField(
                   decoration: InputDecoration(
                     border:
                         OutlineInputBorder(borderSide: BorderSide(width: 60)),
-                    labelText: 'Enter: whatever we enter here',
-                  ),
-                  keyboardType: TextInputType.text,
-                ),
-              ),
-              Container(
-                height: 50,
-                width: 300,
-                margin: const EdgeInsets.all(10),
-                child: const TextField(
-                  decoration: InputDecoration(
-                    border:
-                        OutlineInputBorder(borderSide: BorderSide(width: 60)),
-                    labelText: 'Enter: whatever we enter here',
+                    labelText: 'Description',
                   ),
                   keyboardType: TextInputType.text,
                 ),
@@ -104,20 +123,20 @@ class _CreateNewState extends State<CreateNew> {
                     ),
                 child: Container(
                   margin: const EdgeInsets.only(top: 30),
-                  height: 30,
-                  width: 200,
+                  height: 40,
+                  width: 100,
                   decoration: const BoxDecoration(
                       gradient: LinearGradient(
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                           colors: <Color>[
-                            Colors.amber,
-                            Colors.amber,
+                            Color(0xFFB71C1C),
+                            Color(0xFFB71C1C),
                           ]),
                       borderRadius: BorderRadius.all(Radius.circular(30))),
                   child: const Center(
                     child: Text(
-                      'Next page',
+                      'Post',
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -136,8 +155,7 @@ class _CreateNewState extends State<CreateNew> {
             ]
             ),
           ),
-        ),
-        ] //children
+          ] //children
           ),
     );
   }
