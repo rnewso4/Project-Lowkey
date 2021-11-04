@@ -15,8 +15,10 @@ class Business {
   late Manager _owner;
 
   List<Deals> listOfDeals = [];
+  List<Deals> archivedDeals = [];
 
   List<News> listOfNews = [];
+  List<News> archivedNews = [];
 
   late BussinessCategory styleOfBussiness;
 
@@ -30,7 +32,7 @@ class Business {
 
   void addDeals(Deals newDeal) {
     listOfDeals.add(newDeal);
-    listOfDeals.sort();
+    listOfDeals.sort((a, b) => a.getEndDate().compareTo(b.getEndDate()));
   }
 
   void addNewws(News newNews) {
