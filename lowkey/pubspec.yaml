@@ -12,6 +12,7 @@ dependencies:
   firebase_storage: "^10.0.5"
   cupertino_icons: ^1.0.2
   dots_indicator: ^2.0.0
+  cloud_firestore: ^2.5.3
 
 dev_dependencies:
   flutter_test:
