@@ -7,6 +7,7 @@ class Business {
     final _newsTitle = 'How Ed Orgeron built championship …';
     final _newsDescription = 'Max Johnson had just taken a knee, pumped his fist and secured a thrilling win over Florida …';
 
+//random comment
 Business(String name, String description, String logo) {
   _logo = logo;
   _name = name;
