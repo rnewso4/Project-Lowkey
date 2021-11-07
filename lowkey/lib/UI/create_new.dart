@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:lowkey/UI/homepage_list.dart';
 import 'package:lowkey/flutter_fire.dart';
 import '../flutter_fire.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:lowkey/components/deals.dart';
 
 class CreateNew extends StatefulWidget {
   const CreateNew({Key? key}) : super(key: key);
@@ -36,7 +38,7 @@ class _CreateNewState extends State<CreateNew> {
         ),
         Positioned(
           top: 150,
-          left: 40,
+          left: 25,
           child: Row(children: <Widget> [
             InkWell(
               child: Container(
@@ -69,10 +71,78 @@ class _CreateNewState extends State<CreateNew> {
                     ),
                   ])
               )),
+              const SizedBox(width: 30),
+            InkWell(
+              child: Container(
+                height: 80, 
+                width: 95,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: <Color> [
+                      Color(0xFFFFE082),
+                      Color(0xFFFFE082),
+                    ]
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const <Widget> [
+                    Icon(
+                      Icons.local_drink,
+                      size: 40,
+                      color: Colors.white,
+                    ),
+                    Text(
+                      'Bars',
+                      style: TextStyle(
+                        fontSize: 10,
+                        fontFamily: 'helvetica',
+                        color: Colors.white,
+                      ),
+                    ),
+                  ]
+                ),
+              ),
+            ),
+            const SizedBox(width: 30),
+            InkWell(
+              child: Container(
+                height: 80,
+                width: 95,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: <Color> [
+                      Color(0xFFB71C1C),
+                      Color(0xFFB71C1C),
+                    ]
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const <Widget> [
+                    Icon(
+                      Icons.local_pizza,
+                      size: 40,
+                      color: Colors.white,
+                    ),
+                    Text(
+                      'Pizza',
+                      style: TextStyle(
+                        fontSize: 10,
+                        fontFamily: 'helvetica',
+                        color: Colors.white,
+                      )
+                    )
+                  ]
+                )
+              )
+            )
           ],),
         ),
         Positioned(
-          top: 300,
+          top: 275,
           left: 40,
           child: Column(children: <Widget>[
             Container(
@@ -82,8 +152,11 @@ class _CreateNewState extends State<CreateNew> {
               child: const TextField(
                 decoration: InputDecoration(
                   border:
-                    OutlineInputBorder(borderSide: BorderSide(width: 60)),
-                      labelText: 'Title',
+                    OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      borderSide: BorderSide(width: 60)
+                    ),
+                    labelText: 'Title',
                     ),
                     keyboardType: TextInputType.text,
                 ),
@@ -92,25 +165,32 @@ class _CreateNewState extends State<CreateNew> {
                 height: 100,
                 width: 300,
                 margin: const EdgeInsets.all(10),
-                child: const TextField(
-                  decoration: InputDecoration(
-                    border:
-                        OutlineInputBorder(borderSide: BorderSide(width: 100)),
-                    labelText: 'Select Date',
+                child: TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: 'Enter start date',
+                    hintText: 'MM/DD/YYYY',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      borderSide: BorderSide(width: 60),
+                    )
                   ),
-                  keyboardType: TextInputType.text,
+                  maxLength: 10,
+                  keyboardType: TextInputType.datetime,
                 ),
               ),
               Container(
-                height: 100,
                 width: 300,
                 margin: const EdgeInsets.all(10),
                 child: const TextField(
                   decoration: InputDecoration(
                     border:
-                        OutlineInputBorder(borderSide: BorderSide(width: 60)),
+                      OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        borderSide: BorderSide(width: 60)
+                      ),
                     labelText: 'Description',
                   ),
+                  maxLength: 500,
                   keyboardType: TextInputType.text,
                 ),
               ),
@@ -124,7 +204,7 @@ class _CreateNewState extends State<CreateNew> {
                 child: Container(
                   margin: const EdgeInsets.only(top: 30),
                   height: 40,
-                  width: 100,
+                  width: 125,
                   decoration: const BoxDecoration(
                       gradient: LinearGradient(
                           begin: Alignment.topLeft,

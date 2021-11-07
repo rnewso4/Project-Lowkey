@@ -5,7 +5,7 @@ class Deals {
   String _name = "";
   String _description = "";
   String _photo = "";
-  late DateTime _startDate;
+  static late DateTime _startDate;
   late DateTime _endDate;
 
   Deals(String review, String description, String startDate, String endDate) {
