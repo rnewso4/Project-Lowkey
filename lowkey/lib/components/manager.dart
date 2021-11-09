@@ -1,5 +1,5 @@
 import 'package:lowkey/components/business.dart';
-
+import 'package:lowkey/components/bussiness_category.dart';
 import 'account.dart';
 
 class Manager extends Account {
@@ -8,13 +8,14 @@ class Manager extends Account {
 
   late Business managerOfBusiness;
 
-  int priority = 1;
+  late Priority priorityLVL;
 
   Manager(
       String email, String password, String bussinessNumber, String employID)
       : super(email, password) {
     _bussinessNumber = bussinessNumber;
     _employID = employID;
+    priorityLVL = Priority.Manager;
   }
 
   String verifyBusiness() {

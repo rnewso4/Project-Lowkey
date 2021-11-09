@@ -9,6 +9,10 @@ void main() {
   runApp(const MyApp());
 }
 
+bool checkLogin(String email, String password) {
+  return true;
+}
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   // final Future<FirebaseApp> _initialization = Firebase.initializeApp();
