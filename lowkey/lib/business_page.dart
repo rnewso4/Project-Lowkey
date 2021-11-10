@@ -79,11 +79,12 @@ class _BusinessPageState extends State<BusinessPage> {
             ),
           ),
           header(context),
-          BottomNavbar(
+          /*BottomNavbar(
             onpressed: () => onPressed, 
             iconLeft: Icons.add, 
-            backgroundColor: Colors.white
-          )
+            backgroundColor: Colors.white,
+
+          )*/
           //bottomNavBar(context)
         ]
       )

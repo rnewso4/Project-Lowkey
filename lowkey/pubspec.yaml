@@ -13,6 +13,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   dots_indicator: ^2.0.0
+  google_fonts: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -30,6 +31,7 @@ flutter:
     - lib/assets/fizz.png
     - lib/assets/pizza.png
     - lib/assets/starbucks.jpg
+    - lib/assets/officiallogo.png
   uses-material-design: true
 
   fonts:

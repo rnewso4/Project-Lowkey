@@ -3,6 +3,7 @@ import 'deals_page.dart';
 import 'businesses.dart';
 import 'homepage_swipe.dart';
 import 'components/bottom_navbar.dart';
+import 'components/sidebar.dart';
 
 final PageController controller = PageController(initialPage: 0);
 
@@ -14,6 +15,7 @@ class HomepageList extends StatefulWidget {
 }
 
 class _HomepageListState extends State<HomepageList> {
+  final GlobalKey<ScaffoldState> _scaffoldState = GlobalKey<ScaffoldState>();
   var _pageNum = 0;
   void pageChanged(page) {
     setState(() {
@@ -27,7 +29,6 @@ class _HomepageListState extends State<HomepageList> {
       context, 
       MaterialPageRoute(builder: (context) => const HomepageSwipe()));
   }
-
   @override
   Widget build(BuildContext context) {
     List<Widget> pages = [
@@ -36,6 +37,8 @@ class _HomepageListState extends State<HomepageList> {
     ];
 
     return Scaffold(
+      key: _scaffoldState,
+      drawer: const Sidebar(),
       body: Column(
           children: <Widget>[
             Container(
@@ -58,13 +61,14 @@ class _HomepageListState extends State<HomepageList> {
               ),
             ),
             BottomNavbar(
-              onpressed: () => onPressed, 
+              onMenuPressed: () => _scaffoldState.currentState?.openDrawer(),
               iconLeft: Icons.tune, 
-              backgroundColor: Colors.white
+              backgroundColor: Colors.white,
+              onIconLeftPressed: onPressed,
             )
           ],
         ),
-    );
+    ); 
   }
 }
 

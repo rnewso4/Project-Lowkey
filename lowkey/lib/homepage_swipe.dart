@@ -191,9 +191,10 @@ swippablePages(textbuttonClicked, BuildContext context) {
                   ),
                   _isDealsView ? dealsView() : newsView(),
                   BottomNavbar(
-                    onpressed: () => onPressed, 
+                    onMenuPressed: () => onPressed, 
                     iconLeft: Icons.tune,
-                    backgroundColor: Colors.transparent
+                    backgroundColor: Colors.transparent,
+                    onIconLeftPressed: onPressed,
                   )
                   //bottomNavBar(context)
                   ]

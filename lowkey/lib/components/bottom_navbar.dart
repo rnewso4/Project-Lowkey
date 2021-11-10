@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 
 class BottomNavbar extends StatelessWidget {
-  final Function onpressed;
+
+  final Function onMenuPressed;
   final IconData iconLeft;
   final Color backgroundColor;
+  final Function onIconLeftPressed;
+
   const BottomNavbar({ 
-    Key? key, required this.onpressed, 
+    Key? key, required this.onMenuPressed, 
     required this.iconLeft, 
-    required this.backgroundColor 
+    required this.backgroundColor,
+    required this.onIconLeftPressed
   }) : super(key: key);
 
   @override
@@ -23,11 +27,11 @@ class BottomNavbar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           GestureDetector(
-            onTap: () {},
+            onTap: () => onMenuPressed(),
             child: const Icon(Icons.menu, size: 40, color: Colors.black),
           ),
         GestureDetector(
-          onTap: onpressed(),
+          onTap: () => onIconLeftPressed(),
           child: Icon(iconLeft, size: 40, color: Colors.black)
         )
         ],
