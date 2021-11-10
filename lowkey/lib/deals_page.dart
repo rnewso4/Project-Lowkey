@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'homepage_list.dart';
 
 class DealsPage extends StatefulWidget {
   const DealsPage({Key? key}) : super(key: key);
@@ -48,7 +47,7 @@ class _DealsPageState extends State<DealsPage> {
                   const SizedBox(height: 10),
                   Container(
                     padding: const EdgeInsets.only(left: 20, right: 20),
-                    child: Text(
+                    child: const Text(
                       'Pumpkin Spice Cold Brew - Back For A Limited Time',
                       textAlign: TextAlign.center,
                       style: TextStyle(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'businesses.dart';
 import 'create_new.dart';
-import 'homepage_swipe.dart';
 import 'components/business_comps.dart';
+import 'components/bottom_navbar.dart';
 
 class BusinessPage extends StatefulWidget {
   const BusinessPage({Key? key}) : super(key: key);
@@ -11,6 +11,13 @@ class BusinessPage extends StatefulWidget {
 }
 
 class _BusinessPageState extends State<BusinessPage> {
+
+  void onPressed() {
+    Navigator.push(
+      context, 
+      MaterialPageRoute(builder: (context) => const CreateNew()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,7 +79,12 @@ class _BusinessPageState extends State<BusinessPage> {
             ),
           ),
           header(context),
-          bottomNavBar(context)
+          BottomNavbar(
+            onpressed: () => onPressed, 
+            iconLeft: Icons.add, 
+            backgroundColor: Colors.white
+          )
+          //bottomNavBar(context)
         ]
       )
     );
@@ -116,34 +128,6 @@ businessDetails(index) {
   else {return const Text('2k');}
 }
 
-bottomNavBar(BuildContext context) {
-  return Align(
-    alignment: Alignment.bottomCenter,
-    child: Container(
-      color: Colors.white,
-      height: 70,
-      padding: const EdgeInsets.only(left: 10, right: 10),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.menu, size: 40)
-          ),
-        IconButton(
-        onPressed: () {
-          Navigator.push(
-            context, 
-            MaterialPageRoute(builder: (context) => const CreateNew()));
-        },
-        icon: const Icon(Icons.add, size: 40))
-        ],
-      ),
-    ),
-  );
-}
-
 header(BuildContext context) {
   return Container(
     color: Colors.white,
@@ -155,7 +139,7 @@ header(BuildContext context) {
           children: [
             IconButton(
                     onPressed: () => Navigator.pop(context),
-                    icon: Icon(Icons.arrow_back_ios)),
+                    icon: const Icon(Icons.arrow_back_ios)),
             Text(
               businesses[3].getName(),
               style: const TextStyle(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'deals_page.dart';
 import 'businesses.dart';
-import 'create_new.dart';
 import 'homepage_swipe.dart';
 import 'components/bottom_navbar.dart';
 
@@ -21,6 +20,12 @@ class _HomepageListState extends State<HomepageList> {
       _pageNum = page;
     });
 
+  }
+
+  void onPressed() {
+    Navigator.push(
+      context, 
+      MaterialPageRoute(builder: (context) => const HomepageSwipe()));
   }
 
   @override
@@ -52,39 +57,16 @@ class _HomepageListState extends State<HomepageList> {
                 onPageChanged: pageChanged,
               ),
             ),
-            BottomNavbar(onpressed: () {}, iconLeft: Icons.tune)
+            BottomNavbar(
+              onpressed: () => onPressed, 
+              iconLeft: Icons.tune, 
+              backgroundColor: Colors.white
+            )
           ],
         ),
     );
   }
 }
-
-/*bottomNavBar(BuildContext context) {
-  return Align(
-    alignment: Alignment.bottomCenter,
-    child: Container(
-      height: 70,
-      padding: const EdgeInsets.only(left: 10, right: 10),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.menu, size: 40)
-          ),
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context, 
-                MaterialPageRoute(builder: (context) => const HomepageSwipe()));
-            },
-            icon: const Icon(Icons.tune, size: 40))
-        ],
-      ),
-    ),
-  );
-}*/
 
 dealsAndNewsStyle() => const TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black);
 

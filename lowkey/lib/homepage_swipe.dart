@@ -2,9 +2,9 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'app_icons.dart';
 import 'businesses.dart';
-import 'create_new.dart';
 import 'homepage_list.dart';
 import 'business_page.dart';
+import 'components/bottom_navbar.dart';
 
 final PageController controller = PageController(initialPage: 0);
 
@@ -102,6 +102,15 @@ double svgSize() {
 }
 
 swippablePages(textbuttonClicked, BuildContext context) {
+
+  void onPressed() {
+  Navigator.push(
+    context, 
+    MaterialPageRoute(builder: (context) => const HomepageList()));
+    index = 0;
+    colorIndex = 0;
+  }
+
   return Column(
     children: <Widget>[
       Stack(
@@ -113,7 +122,6 @@ swippablePages(textbuttonClicked, BuildContext context) {
               width: 70
             ),
           ),
-          //This is where the dots would go if I implemented it
           Center(
             child: Container(
               margin: const EdgeInsets.only(top: 70),
@@ -182,7 +190,12 @@ swippablePages(textbuttonClicked, BuildContext context) {
                     ),
                   ),
                   _isDealsView ? dealsView() : newsView(),
-                  bottomNavBar(context)
+                  BottomNavbar(
+                    onpressed: () => onPressed, 
+                    iconLeft: Icons.tune,
+                    backgroundColor: Colors.transparent
+                  )
+                  //bottomNavBar(context)
                   ]
               ),
               Align(

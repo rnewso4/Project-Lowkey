@@ -26,7 +26,7 @@ class _CreateNewState extends State<CreateNew> {
             children: <Widget>[
               IconButton(
                 onPressed: () => Navigator.pop(context),
-                icon: Icon(Icons.arrow_back_ios)),
+                icon: const Icon(Icons.arrow_back_ios)),
               const Text(
                 'Pick a category for your deal',
                 style: TextStyle(
@@ -38,7 +38,7 @@ class _CreateNewState extends State<CreateNew> {
             ],
           ),
               Container(
-                margin: EdgeInsets.symmetric(vertical: 20),
+                margin: const EdgeInsets.symmetric(vertical: 20),
                 height: 100,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
@@ -128,7 +128,7 @@ class _CreateNewState extends State<CreateNew> {
                 width: 125,
                 decoration: BoxDecoration(
                   color: _color[index],
-                  borderRadius: BorderRadius.all(Radius.circular(30))),
+                  borderRadius: const BorderRadius.all(Radius.circular(30))),
                 child: const Center(
                   child: Text(
                     'Post',
@@ -162,27 +162,30 @@ categories(int index) {
   return InkWell(
     child: Container(
       margin: EdgeInsets.only(right: 30, left: (index == 0) ? 30 : 0),
-        height: 80,
-        width: 95,
-        decoration: BoxDecoration(
-          color: _color[index],
-          borderRadius: BorderRadius.all(Radius.circular(30)),
-        ),
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Icon(
-                icons[index],
-                size: 40,
-                color: Colors.white,
-              ),
-              Text(
-                categories[index],
-                style: TextStyle(
-                  fontSize: 10,
-                  fontFamily: 'helvetica',
-                  color: Colors.white,
-                ),
-              ),
-            ])));
+      height: 80,
+      width: 95,
+      decoration: BoxDecoration(
+        color: _color[index],
+        borderRadius: const BorderRadius.all(Radius.circular(30)),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Icon(
+            icons[index],
+            size: 40,
+            color: Colors.white,
+          ),
+          Text(
+            categories[index],
+            style: const TextStyle(
+              fontSize: 10,
+              fontFamily: 'helvetica',
+              color: Colors.white,
+            ),
+          ),
+        ]
+      )
+    )
+  );
 }

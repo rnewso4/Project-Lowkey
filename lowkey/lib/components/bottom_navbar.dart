@@ -3,14 +3,19 @@ import 'package:flutter/material.dart';
 class BottomNavbar extends StatelessWidget {
   final Function onpressed;
   final IconData iconLeft;
-  const BottomNavbar({ Key? key, required this.onpressed, required this.iconLeft }) : super(key: key);
+  final Color backgroundColor;
+  const BottomNavbar({ 
+    Key? key, required this.onpressed, 
+    required this.iconLeft, 
+    required this.backgroundColor 
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Align(
     alignment: Alignment.bottomCenter,
     child: Container(
-      color: Colors.white,
+      color: backgroundColor,
       height: 70,
       padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
       child: Row(
