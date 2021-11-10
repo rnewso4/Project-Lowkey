@@ -1,7 +1,9 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'app_icons.dart';
-import 'businesses.dart';
+import 'package:lowkey/components/sidebar.dart';
+import 'components/app_icons.dart';
+import 'components/businesses.dart';
+import 'components/page_transition.dart';
 import 'homepage_list.dart';
 import 'business_page.dart';
 import 'components/bottom_navbar.dart';
@@ -28,6 +30,8 @@ List<Color> _color = [
   ];
 
 class _HomepageSwipeState extends State<HomepageSwipe> {
+
+  final GlobalKey<ScaffoldState> _scaffoldState = GlobalKey<ScaffoldState>();
 
    List<Widget> pages = [
       dealsView(),
@@ -57,9 +61,9 @@ class _HomepageSwipeState extends State<HomepageSwipe> {
   Widget build(BuildContext context) {
 
   List<Widget> businessPages = [
-    swippablePages(textbuttonClicked, context), 
-    swippablePages(textbuttonClicked, context),
-    swippablePages(textbuttonClicked, context)
+    swippablePages(textbuttonClicked, context, _scaffoldState), 
+    swippablePages(textbuttonClicked, context, _scaffoldState),
+    swippablePages(textbuttonClicked, context, _scaffoldState)
   ];
 
     return Container(
@@ -74,6 +78,8 @@ class _HomepageSwipeState extends State<HomepageSwipe> {
         ),
       ),
       child: Scaffold(
+        key: _scaffoldState,
+        drawer: const Sidebar(),
         backgroundColor: Colors.transparent,
         body: PageView.builder(
                 controller: controller,
@@ -101,70 +107,69 @@ double svgSize() {
   return size;
 }
 
-swippablePages(textbuttonClicked, BuildContext context) {
+swippablePages(textbuttonClicked, BuildContext context, GlobalKey<ScaffoldState> _scaffoldState) {
 
   void onPressed() {
-  Navigator.push(
-    context, 
-    MaterialPageRoute(builder: (context) => const HomepageList()));
+  Navigator.push( context, SlideRightRoute(page: const HomepageList()));
     index = 0;
     colorIndex = 0;
   }
 
-  return Column(
+  return Stack(
     children: <Widget>[
-      Stack(
-        children: <Widget> [
-          Container(
-            margin: const EdgeInsets.only(top: 70, left: 10),
-            child: Image(
-              image: AssetImage(businesses[index].getLogo()), 
-              width: 70
-            ),
-          ),
-          Center(
-            child: Container(
-              margin: const EdgeInsets.only(top: 70),
-              child: DotsIndicator(
-                dotsCount: numOfDots,
-                position: colorIndex.toDouble(),
-                decorator: const DotsDecorator(
-                  color: Colors.black,
-                  activeSize: Size(19, 19),
-                  activeColor: Colors.black
-                ),
-              )
-            ),
-          ),
-        ]
-      ),
-      const SizedBox(height: 10),
-      Text(
-        businesses[index].getName(),
-        style: const TextStyle(
-          fontSize: 26,
-          fontWeight: FontWeight.bold
+      Container(
+        margin: const EdgeInsets.only(top: 60, left: 10),
+        child: Image(
+          image: AssetImage(businesses[index].getLogo()), 
+          width: 70
         )
       ),
-      const SizedBox(height: 10),
-      Image(
-        image: AssetImage(businesses[index].getSVGImage()), 
-        width: svgSize(),
+      Container(
+        alignment: Alignment.topCenter,
+        margin: const EdgeInsets.only(top: 60),
+        child: DotsIndicator(
+          dotsCount: numOfDots,
+          position: colorIndex.toDouble(),
+          decorator: const DotsDecorator(
+            color: Colors.black,
+            activeSize: Size(19, 19),
+            activeColor: Colors.black
+          )
+        )
       ),
-      const SizedBox(height: 20),
-      Expanded(
-        child: Align(
+      Column(
+        children: <Widget>[
+          Container(
+            margin: const EdgeInsets.only(top: 130, bottom: 20),
+            alignment: Alignment.topCenter,
+            child: Text(
+              businesses[index].getName(),
+              style: const TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.bold
+              )
+            )
+          ),
+          Image(
+            image: AssetImage(businesses[index].getSVGImage()), 
+            width: svgSize(),
+          )
+        ]
+      ),
+      Align(
         alignment: Alignment.bottomCenter,
-          child: Container(
-            decoration: const BoxDecoration(
-              color: Color(0xffF4F4F4),
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(50.0),
-                topLeft: Radius.circular(50.0)),
-            ),
-            child: Stack(
-              children: <Widget> [
-                Column(
+        child: Container(
+          height: 450,
+          decoration: const BoxDecoration(
+            color: Color(0xffF4F4F4),
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(50.0),
+              topLeft: Radius.circular(50.0)
+            )
+          ),
+          child: Stack(
+            children: <Widget> [
+              Column(
                 children: <Widget>[
                   Container(
                     padding: const EdgeInsets.only(left: 50, right: 50, top: 20),
@@ -176,7 +181,7 @@ swippablePages(textbuttonClicked, BuildContext context) {
                           child: Text(
                             'Recent Deals', 
                             style: _isDealsView ? dealsAndNewsStyle() : const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)
-                          ),
+                          )
                         ),
                         const SizedBox(width: 40),
                         TextButton(
@@ -184,20 +189,19 @@ swippablePages(textbuttonClicked, BuildContext context) {
                           child: Text(
                             'Top News', 
                             style: !_isDealsView ? dealsAndNewsStyle() : const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)
-                          ),
+                          )
                         )
                       ]
-                    ),
+                    )
                   ),
                   _isDealsView ? dealsView() : newsView(),
                   BottomNavbar(
-                    onMenuPressed: () => onPressed, 
+                    onMenuPressed: () => _scaffoldState.currentState?.openDrawer(),
                     iconLeft: Icons.tune,
                     backgroundColor: Colors.transparent,
                     onIconLeftPressed: onPressed,
                   )
-                  //bottomNavBar(context)
-                  ]
+                ]
               ),
               Align(
                 alignment: Alignment.bottomCenter,
@@ -221,22 +225,21 @@ swippablePages(textbuttonClicked, BuildContext context) {
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 20
-                        ),
+                        )
                       )
-                    ),
-                  ),
-                ),
-              ),
-              ]
-            )
+                    )
+                  )
+                )
+              )
+            ]
           )
-        ),    
-      ),
-    ]
+        )
+      )
+    ],
   );
 }
 
-dealsView() {
+Widget dealsView() {
   return Expanded(
     child: Container(
       padding: const EdgeInsets.only(right: 10),
@@ -250,7 +253,7 @@ dealsView() {
                 child: Text(businesses[index].getDescription(),
                 style: const TextStyle(fontWeight: FontWeight.bold),),
               )
-            ],
+            ]
           ),
           const SizedBox(height: 30),
           Row(
@@ -258,7 +261,6 @@ dealsView() {
               Container(
                 margin: const EdgeInsets.only(left: 5, right: 5),
                 child: Icon(MyFlutterApp.coffee, size: 50, color: _color[colorIndex])),
-              //SizedBox(width: 10),
               Flexible(
                 child: Text(businesses[4].getDescription(),
                 textAlign: TextAlign.center,
@@ -279,7 +281,7 @@ dealsView() {
   );
 }
 
-newsView() {
+Widget newsView() {
   return Expanded(
     child: Container(
       padding: const EdgeInsets.only(top: 10, left: 20, right: 20),
@@ -300,71 +302,22 @@ newsView() {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(businesses[index].getDate(),
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: _color[colorIndex]
-              )
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: _color[colorIndex]
+                )
               ),
               Text('Read More',
-              style: TextStyle(
-                decoration: TextDecoration.underline,
-                color: _color[colorIndex]
+                style: TextStyle(
+                  decoration: TextDecoration.underline,
+                  color: _color[colorIndex]
+                )
               )
-              ),
             ]
           )
         ]
       )
-    ),
-  );
-}
-
-
-
-tilesForDeals(String name, String logo, String description) {
-  return ListTile(
-    leading: Image(image: AssetImage(logo), width: 70,),
-    title: Text(name),
-    subtitle: Text(description),
-    trailing: const Icon(Icons.more_vert)
-  );
-}
-
-tilesForNews(String name, String logo, String description) {
-  return ListTile(
-    leading: Image(image: AssetImage(logo), width: 70,),
-    title: Text(name),
-    subtitle: Text(description),
-    trailing: const Icon(Icons.more_vert)
-  );
-}
-
-bottomNavBar(BuildContext context) {
-  return Align(
-    alignment: Alignment.bottomCenter,
-    child: Container(
-      height: 70,
-      padding: const EdgeInsets.only(left: 10, right: 10),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.menu, size: 40)
-          ),
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context, 
-                MaterialPageRoute(builder: (context) => const HomepageList()));
-                index = 0;
-                colorIndex = 0;
-            },
-            icon: const Icon(Icons.tune, size: 40))
-        ],
-      ),
-    ),
+    )
   );
 }
 

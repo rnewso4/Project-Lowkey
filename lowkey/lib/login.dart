@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lowkey/components/logo_style.dart';
 
+import 'components/page_transition.dart';
 import 'homepage_list.dart';
 
 class Login extends StatefulWidget {
@@ -30,15 +32,8 @@ class _LoginState extends State<Login> {
               padding: const EdgeInsets.only(top: 15, bottom: 40),
               child: Text(
                 'LOWKEY',
-                style: GoogleFonts.montserrat(
-                  textStyle: const TextStyle(
-                    fontWeight: FontWeight.w800,
-                    fontStyle: FontStyle.italic,
-                    fontSize: 40
-                  ),
-                  letterSpacing: 1
-                )
-              ),
+                style: loginLogo
+              )
             ),
             Container(
               padding: const EdgeInsets.only(left: 50),
@@ -49,7 +44,7 @@ class _LoginState extends State<Login> {
                   fontSize: 17,
                   fontWeight: FontWeight.w600
                 )
-                ),
+              )
             ),
             Container(
               height: 50,
@@ -58,7 +53,7 @@ class _LoginState extends State<Login> {
               child: const Material(
                 elevation: 2,
                 child: TextField(
-                  //autofocus: true,
+                  autofocus: true,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(5)),
@@ -68,8 +63,8 @@ class _LoginState extends State<Login> {
                     hintText: 'tigers@lsu.edu',
                   ),
                   keyboardType: TextInputType.emailAddress,
-                ),
-              ),
+                )
+              )
             ),
             Container(
               height: 50,
@@ -88,14 +83,11 @@ class _LoginState extends State<Login> {
                   ),
                   obscureText: true,
                   keyboardType: TextInputType.emailAddress,
-                ),
-              ),
+                )
+              )
             ),
             GestureDetector(
-              onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const HomepageList())
-                    ),
+              onTap: () => Navigator.push( context, SlideRightRoute(page: const HomepageList())),
               child: Container(
                 height: 50,
                 width: 300,
@@ -112,10 +104,10 @@ class _LoginState extends State<Login> {
                       letterSpacing: 2,
                       fontWeight: FontWeight.bold,
                       fontSize: 20
-                    ),
-                  ),
-                ),
-              ),
+                    )
+                  )
+                )
+              )
             ),
             GestureDetector(
               onTap: () => setState(() {
@@ -136,10 +128,10 @@ class _LoginState extends State<Login> {
                       letterSpacing: 2,
                       fontWeight: FontWeight.bold,
                       fontSize: 20
-                    ),
-                  ),
-                ),
-              ),
+                    )
+                  )
+                )
+              )
             ),
             if (_tries <= 0) Container(
               padding: const EdgeInsets.only(top: 20, right: 50),
@@ -149,11 +141,11 @@ class _LoginState extends State<Login> {
                 style: TextStyle(
                   decoration: TextDecoration.underline,
                   fontWeight: FontWeight.bold
-                ),
-                ),
+                )
+              )
             )
           ]
-        ),
+        )
       )
     );
   }

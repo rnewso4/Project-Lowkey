@@ -32,6 +32,7 @@ flutter:
     - lib/assets/pizza.png
     - lib/assets/starbucks.jpg
     - lib/assets/officiallogo.png
+    - lib/assets/officiallogo2.png
   uses-material-design: true
 
   fonts:

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'businesses.dart';
+import 'components/businesses.dart';
 import 'create_new.dart';
 import 'components/business_comps.dart';
 import 'components/bottom_navbar.dart';
+import 'components/sidebar.dart';
 
 class BusinessPage extends StatefulWidget {
   const BusinessPage({Key? key}) : super(key: key);
@@ -20,7 +21,12 @@ class _BusinessPageState extends State<BusinessPage> {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> _scaffoldState = GlobalKey<ScaffoldState>();
+
     return Scaffold(
+      key: _scaffoldState,
+      drawer: const Sidebar(),
+      backgroundColor: Colors.white,
       body: Stack(
         children: <Widget>[
           Container(
@@ -33,14 +39,14 @@ class _BusinessPageState extends State<BusinessPage> {
                   child: Image(
                     width: 150,
                     image: AssetImage(businesses[3].getLogo())
-                  ),
+                  )
                 ),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: const Text(
                     'Highland coffee house is a small-business located near LSU that sells coffee and other stuff.',
                     textAlign: TextAlign.center,
-                  ),
+                  )
                 ),
                 Container(
                   height: 42,
@@ -68,24 +74,23 @@ class _BusinessPageState extends State<BusinessPage> {
                               color: Colors.white,
                               fontWeight: FontWeight.bold
                             )
-                          ),
+                          )
                         )
-                      ),
+                      )
                     ]
                   ),
                 ),
-                const DealsComponent(),
-              ],
-            ),
+                const DealsComponent()
+              ]
+            )
           ),
           header(context),
-          /*BottomNavbar(
-            onpressed: () => onPressed, 
+          BottomNavbar(
+            onIconLeftPressed: onPressed, 
             iconLeft: Icons.add, 
             backgroundColor: Colors.white,
-
-          )*/
-          //bottomNavBar(context)
+            onMenuPressed: () => _scaffoldState.currentState?.openDrawer()
+          )
         ]
       )
     );
@@ -114,8 +119,8 @@ pageDetails(index) {
     children: <Widget>[
       Text(categories[index]),
       istree ? const SizedBox(height: 5) : const SizedBox(),
-      businessDetails(index),
-    ],
+      businessDetails(index)
+    ]
   );
 }
 
@@ -139,19 +144,19 @@ header(BuildContext context) {
         Row(
           children: [
             IconButton(
-                    onPressed: () => Navigator.pop(context),
-                    icon: const Icon(Icons.arrow_back_ios)),
+              onPressed: () => Navigator.pop(context),
+              icon: const Icon(Icons.arrow_back_ios)),
             Text(
               businesses[3].getName(),
               style: const TextStyle(
                 fontSize: 25, 
                 fontWeight: FontWeight.bold
               )
-            ),
-          ],
+            )
+          ]
         ),
         const Icon(Icons.more_vert)
       ]
-    ),
+    )
   );
 }

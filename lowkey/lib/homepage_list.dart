@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'components/page_transition.dart';
 import 'deals_page.dart';
-import 'businesses.dart';
+import 'components/businesses.dart';
 import 'homepage_swipe.dart';
 import 'components/bottom_navbar.dart';
 import 'components/sidebar.dart';
@@ -15,59 +16,57 @@ class HomepageList extends StatefulWidget {
 }
 
 class _HomepageListState extends State<HomepageList> {
+
   final GlobalKey<ScaffoldState> _scaffoldState = GlobalKey<ScaffoldState>();
   var _pageNum = 0;
   void pageChanged(page) {
     setState(() {
       _pageNum = page;
     });
-
   }
 
   void onPressed() {
-    Navigator.push(
-      context, 
+    Navigator.push(context, 
       MaterialPageRoute(builder: (context) => const HomepageSwipe()));
   }
+
   @override
   Widget build(BuildContext context) {
-    List<Widget> pages = [
-      dealsView(),
-      newsView()
-    ];
+    List<Widget> pages = [dealsView(), newsView()];
 
     return Scaffold(
       key: _scaffoldState,
       drawer: const Sidebar(),
       body: Column(
-          children: <Widget>[
-            Container(
-              height: 90,
-              padding: const EdgeInsets.only(top: 50, left: 30),
-              child: Row(
-                children: <Widget>[
-                  Text('Recent Deals', style: (_pageNum == 0) ? dealsAndNewsStyle() : const TextStyle(color: Colors.grey)),
-                  const SizedBox(width: 40),
-                  Text('Top News', style: (_pageNum == 1) ? dealsAndNewsStyle() : const TextStyle(color: Colors.grey))
-                ],),
-            ),
-            Expanded(
-              child: PageView.builder(
-                controller: controller,
-                scrollDirection: Axis.horizontal,
-                itemCount: pages.length,
-                itemBuilder: (context, index) => pages[index],
-                onPageChanged: pageChanged,
-              ),
-            ),
-            BottomNavbar(
-              onMenuPressed: () => _scaffoldState.currentState?.openDrawer(),
-              iconLeft: Icons.tune, 
-              backgroundColor: Colors.white,
-              onIconLeftPressed: onPressed,
+        children: <Widget>[
+          Container(
+            height: 90,
+            padding: const EdgeInsets.only(top: 50, left: 30),
+            child: Row(
+              children: <Widget>[
+                Text('Recent Deals', style: (_pageNum == 0) ? dealsAndNewsStyle() : const TextStyle(color: Colors.grey)),
+                const SizedBox(width: 40),
+                Text('Top News', style: (_pageNum == 1) ? dealsAndNewsStyle() : const TextStyle(color: Colors.grey))
+              ]
             )
-          ],
-        ),
+          ),
+          Expanded(
+            child: PageView.builder(
+              controller: controller,
+              scrollDirection: Axis.horizontal,
+              itemCount: pages.length,
+              itemBuilder: (context, index) => pages[index],
+              onPageChanged: pageChanged,
+            )
+          ),
+          BottomNavbar(
+            onMenuPressed: () => _scaffoldState.currentState?.openDrawer(),
+            iconLeft: Icons.tune, 
+            backgroundColor: Colors.white,
+            onIconLeftPressed: () => Navigator.push(context, SlideRightRoute(page: const HomepageSwipe())),
+          )
+        ]
+      )
     ); 
   }
 }
@@ -82,7 +81,7 @@ tilesForDeals(String name, String logo, String description, context) {
     trailing: const Icon(Icons.star_outline),
     onTap: () {
       Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const DealsPage()));
-    },
+    }
   );
 }
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../app_icons.dart';
+import 'app_icons.dart';
 
 class DealsComponent extends StatelessWidget {
   const DealsComponent({ Key? key }) : super(key: key);
@@ -14,72 +14,75 @@ class DealsComponent extends StatelessWidget {
           const Align(
             alignment: Alignment.topLeft,
             child: Text(
-            'Deals',
-            style: TextStyle(
-              fontSize: 25,
-              letterSpacing: 2.0
+              'Deals',
+              style: TextStyle(
+                fontSize: 25,
+                letterSpacing: 2.0
+              )
             )
-                      ),
           ),
-        Container(
-          height: 140,
-          margin: const EdgeInsets.only(top: 20, bottom: 30),
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            //shrinkWrap: true,
-            itemCount: 7,
-            itemBuilder: (context, index) => dealsCard()),
-        ),
-        const Align(
+          Container(
+            height: 140,
+            margin: const EdgeInsets.only(top: 20, bottom: 30),
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 7,
+              itemBuilder: (context, index) => dealsCard()
+            )
+          ),
+          const Align(
             alignment: Alignment.topLeft,
             child: Text(
-            'News Stories',
-            style: TextStyle(
-              fontSize: 25,
-              letterSpacing: 2.0
-            )
-                      ),
-          ),
-        Container(
-          height: 140,
-          margin: const EdgeInsets.only(top: 20, bottom: 27),
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            //shrinkWrap: true,
-            itemCount: 7,
-            itemBuilder: (context, index) => dealsCard()),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text('Reviews', style: categoryTextStyle()),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: const <Widget>[
-              Text('4.3', style: TextStyle(
+              'News Stories',
+              style: TextStyle(
                 fontSize: 25,
-                fontWeight: FontWeight.w700
-              )),
-              Padding(
-                padding: EdgeInsets.only(bottom: 3),
-                child: Text(' out of 5', style: TextStyle(
-                  color: Colors.grey
-                )),
+                letterSpacing: 2.0
               )
-            ])
-          ]
-        ),
-        ListView.builder(
-          physics: const NeverScrollableScrollPhysics(),
-          //scrollDirection: Axis.vertical,
-          shrinkWrap: true,
-          itemCount: 3,
-          itemBuilder: (context, index) => reviews()
-        )
+            )
+          ),
+          Container(
+            height: 140,
+            margin: const EdgeInsets.only(top: 20, bottom: 27),
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 7,
+              itemBuilder: (context, index) => dealsCard()
+            )
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text('Reviews', style: categoryTextStyle()),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: const <Widget>[
+                  Text('4.3', style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.w700
+                  )
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 3),
+                    child: Text(' out of 5', style: TextStyle(
+                      color: Colors.grey
+                    ))
+                  )
+                ]
+              )
+            ]
+          ),
+          ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            //scrollDirection: Axis.vertical,
+            shrinkWrap: true,
+            itemCount: 3,
+            itemBuilder: (context, index) => reviews()
+          )
         ]
-      ),
+      )
     );
   }
+}
 
 dealsCard() {
   return Container(
@@ -98,7 +101,7 @@ dealsCard() {
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const <Widget>[
-                  Text(
+                Text(
                   'Posted 23 hours ago',
                   style: TextStyle(
                     fontSize: 11,
@@ -113,7 +116,6 @@ dealsCard() {
       )
     ),
   );
-}
 }
 
 categoryTextStyle() {

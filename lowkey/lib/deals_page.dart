@@ -8,6 +8,22 @@ class DealsPage extends StatefulWidget {
 }
 
 class _DealsPageState extends State<DealsPage> {
+  double containerHeight = 500;
+  IconData _iconData = Icons.arrow_upward_rounded;
+
+  changeHeight() {
+    setState(() {
+      if (containerHeight <= 500) {
+        containerHeight = 700;
+        _iconData = Icons.arrow_downward_rounded;
+      }
+      else {
+        containerHeight = 500;
+        _iconData = Icons.arrow_upward_rounded;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,23 +42,24 @@ class _DealsPageState extends State<DealsPage> {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: Container(
-              height: 500,
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.ease,
+              height: containerHeight,
               width: 400,
               decoration: const BoxDecoration(
                 color: Color(0xffF4F4F4),
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(40.0),
-                  topLeft: Radius.circular(40.0)),
+                  topLeft: Radius.circular(40.0)
+                )
               ),
               child: Column(
                 children:  <Widget> [
                   const SizedBox(height: 15),
-                  const Text(
-                    '250 characters max for comments',
-                    style: TextStyle(
-                      color: Color(0xff707070)
-                    ),
+                  GestureDetector(
+                    onTap: changeHeight,
+                    child: Icon(_iconData),
                   ),
                   const SizedBox(height: 10),
                   Container(
@@ -53,8 +70,8 @@ class _DealsPageState extends State<DealsPage> {
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold
-                      ),
-                    ),
+                      )
+                    )
                   ),
                   const SizedBox(height: 20),
                   Container(
@@ -63,8 +80,8 @@ class _DealsPageState extends State<DealsPage> {
                       'Starbucks® Cold Brew sweetened with vanilla syrup and topped with a pumpkin cream cold foam and a dusting of pumpkin spice topping.',
                       style: TextStyle(
                         fontSize: 13
-                      ),
-                    ),
+                      )
+                    )
                   ),
                   const SizedBox(height: 20),
                   Container(
@@ -87,68 +104,66 @@ class _DealsPageState extends State<DealsPage> {
                           )
                         )
                       ]
-                    ),
+                    )
                   ),
-                const Divider(
-                  height: 20,
-                  thickness: 1,
-                  color: Color(0xff707070)
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    Row(
-                      children: const <Widget>[
-                        Text('155K ',
-                        style: TextStyle(
-                          color: Color(0xff676666),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14
-                        )
-                        ),
-                        Text('Likes',
-                        style: TextStyle(
-                          color: Color(0xff676666),
-                          fontSize: 12
-                        )
-                        )
-                      ],),
+                  const Divider(height: 20, thickness: 1, color: Color(0xff707070)),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
                       Row(
-                      children: const <Widget>[
-                        Text('2K ',
-                        style: TextStyle(
-                          color: Color(0xff676666),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14
-                        )
-                        ),
-                        Text('Comments',
-                        style: TextStyle(
-                          color: Color(0xff676666),
-                          fontSize: 12
-                        )
-                        )
-                      ],)
-                  ],
+                        children: const <Widget>[
+                          Text('155K ',
+                            style: TextStyle(
+                              color: Color(0xff676666),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14
+                            )
+                          ),
+                          Text('Likes',
+                            style: TextStyle(
+                              color: Color(0xff676666),
+                              fontSize: 12
+                            )
+                          )
+                        ]
+                      ),
+                      Row(
+                        children: const <Widget>[
+                          Text('2K ',
+                          style: TextStyle(
+                            color: Color(0xff676666),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14
+                          )
+                          ),
+                          Text('Comments',
+                            style: TextStyle(
+                              color: Color(0xff676666),
+                              fontSize: 12
+                            )
+                          )
+                        ]
+                      )
+                    ]
                   ),
                   const Divider(
-                  height: 20,
-                  thickness: 1,
-                  color: Color(0xff707070)
-                ),
-                Expanded(
-                  child: ListView.separated(
-                    padding: const EdgeInsets.fromLTRB(15, 0, 15, 15),
-                    itemCount: 7,
-                    itemBuilder: (context, index) => comments(context, index),
-                    separatorBuilder: (context, index) => const Divider(),
+                    height: 20,
+                    thickness: 1,
+                    color: Color(0xff707070)
                   ),
-                )
+                  Expanded(
+                    child: ListView.separated(
+                      padding: const EdgeInsets.fromLTRB(15, 0, 15, 15),
+                      itemCount: 7,
+                      itemBuilder: (context, index) => comments(context, index),
+                      separatorBuilder: (context, index) => const Divider(),
+                    )
+                  )
                 ]
               )
-            ),
+            )
           )
-        ],
+        ]
       )
     );
   }
@@ -171,13 +186,15 @@ comments(context, index) {
               ),
               SizedBox(height: 5),
               Text(
-                'Lorem ipsum dolor sit amet, consectetuer adipi elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam fe',
+                'Lorem ipsum dolor sit amet, consectetuer adipi elit. '
+                'Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis '
+                'parturient montes, nascetur ridiculus mus. Donec quam fe',
                 style: TextStyle(
                   fontSize: 13
                 )
-                )
-            ],
-          ),
+              )
+            ]
+          )
         ),
         Expanded(
           flex: 1,
@@ -191,7 +208,7 @@ comments(context, index) {
                     Icons.favorite_border
                   ),
                   Text('56')
-                ],
+                ]
               ),
               Column(
                 children: const <Widget>[
@@ -199,10 +216,10 @@ comments(context, index) {
                     Icons.comment_outlined
                   ),
                   Text('12M')
-                ],
+                ]
               )
-            ],
-          ),
+            ]
+          )
         )
       ]
     )

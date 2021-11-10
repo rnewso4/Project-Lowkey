@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lowkey/homepage_swipe.dart';
 import 'package:lowkey/login.dart';
 import 'login.dart';
-import 'homepage_list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.grey,
       ),
-      home: const Login()
+      home: const HomepageSwipe()
     );
   }
 }
