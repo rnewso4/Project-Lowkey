@@ -1,44 +1,53 @@
 import 'package:flutter/material.dart';
-import 'package:lowkey/business_page.dart';
 import 'package:lowkey/components/logo_style.dart';
 import 'package:lowkey/homepage_list.dart';
 import 'package:lowkey/homepage_swipe.dart';
+import 'package:lowkey/login.dart';
 import 'package:lowkey/search_businesses.dart';
 import 'global.dart' as global;
 import 'page_transition.dart';
 
 class Sidebar extends StatelessWidget {
-  Sidebar({ Key? key }) : super(key: key);
+  const Sidebar({ Key? key }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: Container(
         color: const Color(0xff3C3C3C),
-        child: Column(
-          children: [
-            Container(
-              height: 50,
-              margin: const EdgeInsets.only(top: 45, bottom: 25),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Image(
-                    height: 50,
-                    image: AssetImage('lib/assets/officiallogo2.png')
+        child: Stack(
+          children: <Widget>[
+            Column(
+              children: [
+                Container(
+                  height: 50,
+                  margin: const EdgeInsets.only(top: 45, bottom: 25),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Image(
+                        height: 50,
+                        image: AssetImage('lib/assets/officiallogo2.png')
+                      ),
+                      const SizedBox(width: 8),
+                      Text('LOWKEY', style: sidebarLogo),
+                    ],
+                  )
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    padding: const EdgeInsets.only(top: 0),
+                    itemCount: 3,
+                    itemBuilder: (context, index) => tiles(context, index)
                   ),
-                  const SizedBox(width: 8),
-                  Text('LOWKEY', style: sidebarLogo),
-                ],
-              )),
-             
-            Expanded(
-              child: ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                padding: const EdgeInsets.only(top: 0),
-                itemCount: 3,
-                itemBuilder: (context, index) => tiles(context, index)
-              ),
+                ),
+              ],
             ),
+            Container(
+              margin: const EdgeInsets.only(bottom: 20),
+              alignment: Alignment.bottomCenter,
+            child: tiles(context, 3)
+            )
           ],
         ),
       ),
@@ -46,10 +55,10 @@ class Sidebar extends StatelessWidget {
   }
 }
 
-tiles(BuildContext context, int index) {
-  List<String> categories = ['List View', 'Swipe View', 'Business Pages'];
-  List<IconData> icons = [Icons.list, Icons.swipe, Icons.business];
-  List<Widget> onClick = [const HomepageList(), const HomepageSwipe(), const BusinessSearch()];
+Widget tiles(BuildContext context, int index) {
+  List<String> categories = ['List View', 'Swipe View', 'Business Pages', 'Logout'];
+  List<IconData> icons = [Icons.list, Icons.swipe, Icons.business, Icons.logout];
+  List<Widget> onClick = [const HomepageList(), const HomepageSwipe(), const BusinessSearch(), const Login()];
   return GestureDetector(
     onTap: () {
       Navigator.push( context, SlideRightRoute(page: onClick[index]));

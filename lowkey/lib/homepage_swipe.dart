@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:lowkey/components/sidebar.dart';
 import 'components/app_icons.dart';
 import 'components/businesses.dart';
-import 'components/page_transition.dart';
-import 'homepage_list.dart';
 import 'business_page.dart';
 import 'components/bottom_navbar.dart';
 
@@ -81,7 +79,7 @@ class _HomepageSwipeState extends State<HomepageSwipe> {
     ),
     child: Scaffold(
       key: _scaffoldState,
-      drawer: Sidebar(),
+      drawer: const Sidebar(),
       backgroundColor: Colors.transparent,
       body: PageView.builder(
         controller: controller,
@@ -211,7 +209,7 @@ swippablePages(textbuttonClicked, BuildContext context, GlobalKey<ScaffoldState>
                   child: InkWell(
                     onTap: () => Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const BusinessPage())
+                      MaterialPageRoute(builder: (context) => const BusinessPage(showBackButton: true))
                     ),
                     child: const Center(
                       child: Text(

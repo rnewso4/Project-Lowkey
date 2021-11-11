@@ -6,13 +6,13 @@ import 'components/bottom_navbar.dart';
 import 'components/sidebar.dart';
 
 class BusinessPage extends StatefulWidget {
-  const BusinessPage({Key? key}) : super(key: key);
+  final bool? showBackButton;
+  const BusinessPage({Key? key, this.showBackButton}) : super(key: key);
   @override
   _BusinessPageState createState() => _BusinessPageState();
 }
 
 class _BusinessPageState extends State<BusinessPage> {
-
   void onPressed() {
     Navigator.push(
       context, 
@@ -22,10 +22,9 @@ class _BusinessPageState extends State<BusinessPage> {
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> _scaffoldState = GlobalKey<ScaffoldState>();
-
     return Scaffold(
       key: _scaffoldState,
-      drawer: Sidebar(),
+      drawer: const Sidebar(),
       backgroundColor: Colors.white,
       body: Stack(
         children: <Widget>[
@@ -84,7 +83,7 @@ class _BusinessPageState extends State<BusinessPage> {
               ]
             )
           ),
-          header(context),
+          header(context, widget.showBackButton),
           BottomNavbar(
             onIconRightPressed: onPressed, 
             iconLeft: Icons.add, 
@@ -134,7 +133,7 @@ businessDetails(index) {
   else {return const Text('2k');}
 }
 
-header(BuildContext context) {
+header(BuildContext context, bool? isTrue) {
   return Container(
     color: Colors.white,
     padding: const EdgeInsets.fromLTRB(10, 60, 5, 0),
@@ -142,8 +141,8 @@ header(BuildContext context) {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         Row(
-          children: [
-            IconButton(
+          children: <Widget>[
+            if (isTrue ?? false) IconButton(
               onPressed: () => Navigator.pop(context),
               icon: const Icon(Icons.arrow_back_ios)),
             Text(

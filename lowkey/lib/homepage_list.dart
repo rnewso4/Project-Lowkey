@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'components/page_transition.dart';
 import 'deals_page.dart';
 import 'components/businesses.dart';
 import 'homepage_swipe.dart';
@@ -36,7 +35,7 @@ class _HomepageListState extends State<HomepageList> {
 
     return Scaffold(
       key: _scaffoldState,
-      drawer: Sidebar(),
+      drawer: const Sidebar(),
       body: Column(
         children: <Widget>[
           Container(
