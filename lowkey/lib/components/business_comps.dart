@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lowkey/deals_page.dart';
 
 import 'app_icons.dart';
 
@@ -27,7 +28,7 @@ class DealsComponent extends StatelessWidget {
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 7,
-              itemBuilder: (context, index) => dealsCard()
+              itemBuilder: (context, index) => dealsCard(context)
             )
           ),
           const Align(
@@ -46,7 +47,7 @@ class DealsComponent extends StatelessWidget {
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 7,
-              itemBuilder: (context, index) => dealsCard()
+              itemBuilder: (context, index) => newsCard()
             )
           ),
           Row(
@@ -84,7 +85,46 @@ class DealsComponent extends StatelessWidget {
   }
 }
 
-dealsCard() {
+dealsCard(BuildContext context) {
+  return GestureDetector(
+    onTap: () {
+      Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const DealsPage()));
+    },
+    child: Container(
+      margin: const EdgeInsets.only(right: 30),
+      width: 200,
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(8, 8, 2, 6),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              const Text(
+                '\$5 off every coffee purchased before noon. Please see our terms and conditions for more info',
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const <Widget>[
+                  Text(
+                    'Posted 23 hours ago',
+                    style: TextStyle(
+                      fontSize: 11,
+                      color: Color(0xff8E8E8E)
+                    )
+                  ),
+                  Icon(MyFlutterApp.dollar, size: 20, color: Colors.grey),
+                ]
+              )
+            ]
+          ),
+        )
+      ),
+    ),
+  );
+}
+
+newsCard() {
   return Container(
     margin: const EdgeInsets.only(right: 30),
     width: 200,
@@ -95,7 +135,7 @@ dealsCard() {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             const Text(
-              '\$5 off every coffee purchased before noon. Please see our terms and conditions for more info',
+              'News Stories. Please see our terms and conditions for more info',
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.end,

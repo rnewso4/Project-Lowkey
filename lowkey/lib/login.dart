@@ -134,7 +134,7 @@ class _LoginState extends State<Login> {
               )
             ),
             if (_tries <= 0) Container(
-              padding: const EdgeInsets.only(top: 20, right: 50),
+              padding: const EdgeInsets.only(top: 30, right: 50),
               alignment: Alignment.topRight,
               child: const Text(
                 'Forgot your password?',
