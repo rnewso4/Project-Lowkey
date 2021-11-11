@@ -8,6 +8,10 @@ import 'homepage_list.dart';
 import 'business_page.dart';
 import 'components/bottom_navbar.dart';
 
+// Reason why a global variable is used here is because when sidebar navigates to a new page,
+//the index needs to be set back to 0 else app breaks
+import 'components/global.dart' as global;
+
 final PageController controller = PageController(initialPage: 0);
 
 class HomepageSwipe extends StatefulWidget {
@@ -18,9 +22,7 @@ class HomepageSwipe extends StatefulWidget {
 
 //TODO: add more icons for the deals page
 
-var index = 0;
 var _isDealsView = true;
-var colorIndex = 0;
 var numOfDots = 3;
 
 List<Color> _color = [
@@ -40,13 +42,13 @@ class _HomepageSwipeState extends State<HomepageSwipe> {
 
     void onPageChanged(page) {
       setState(() {
-        if (index / 3 > page) {
-          index -= 3;
-          colorIndex -= 1;
+        if (global.swipeIndex/ 3 > page) {
+          global.swipeIndex -= 3;
+          global.swipePageColorIndex -= 1;
         }
         else {
-          index += 3;
-          colorIndex += 1;
+          global.swipeIndex += 3;
+          global.swipePageColorIndex += 1;
         }
       });
     }
@@ -66,55 +68,54 @@ class _HomepageSwipeState extends State<HomepageSwipe> {
     swippablePages(textbuttonClicked, context, _scaffoldState)
   ];
 
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.centerRight,
-          colors: <Color> [
-            Colors.white,
-            _color[colorIndex]
-          ]
-        ),
+  return Container(
+    decoration: BoxDecoration(
+      gradient: LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.centerRight,
+        colors: <Color> [
+          Colors.white,
+          _color[global.swipePageColorIndex]
+        ]
       ),
-      child: Scaffold(
-        key: _scaffoldState,
-        drawer: const Sidebar(),
-        backgroundColor: Colors.transparent,
-        body: PageView.builder(
-                controller: controller,
-                scrollDirection: Axis.horizontal,
-                itemCount: businessPages.length,
-                itemBuilder: (context, index) => businessPages[index],
-                onPageChanged: onPageChanged
-      ),
+    ),
+    child: Scaffold(
+      key: _scaffoldState,
+      drawer: Sidebar(),
+      backgroundColor: Colors.transparent,
+      body: PageView.builder(
+        controller: controller,
+        scrollDirection: Axis.horizontal,
+        itemCount: businessPages.length,
+        itemBuilder: (context, index) => businessPages[index],
+        onPageChanged: onPageChanged
       )
-    );
+    )
+  );
   }
 }
 
 double svgSize() {
   double size = 0.0;
-  if (businesses[index].getName() == 'Highland Coffee') {
+  if (businesses[global.swipeIndex].getName() == 'Highland Coffee') {
     size = 280.0;
   }
-  else if (businesses[index].getName() == 'The Revelry') {
+  else if (businesses[global.swipeIndex].getName() == 'The Revelry') {
     size = 180.0;
   }
-  else if (businesses[index].getName() == 'Reginelli’s Pizzeria') {
+  else if (businesses[global.swipeIndex].getName() == 'Reginelli’s Pizzeria') {
     size = 240.0;
   }
   return size;
 }
 
 swippablePages(textbuttonClicked, BuildContext context, GlobalKey<ScaffoldState> _scaffoldState) {
-
   return Stack(
     children: <Widget>[
       Container(
         margin: const EdgeInsets.only(top: 60, left: 10),
         child: Image(
-          image: AssetImage(businesses[index].getLogo()), 
+          image: AssetImage(businesses[global.swipeIndex].getLogo()), 
           width: 70
         )
       ),
@@ -123,7 +124,7 @@ swippablePages(textbuttonClicked, BuildContext context, GlobalKey<ScaffoldState>
         margin: const EdgeInsets.only(top: 60),
         child: DotsIndicator(
           dotsCount: numOfDots,
-          position: colorIndex.toDouble(),
+          position: global.swipePageColorIndex.toDouble(),
           decorator: const DotsDecorator(
             color: Colors.black,
             activeSize: Size(19, 19),
@@ -137,7 +138,7 @@ swippablePages(textbuttonClicked, BuildContext context, GlobalKey<ScaffoldState>
             margin: const EdgeInsets.only(top: 130, bottom: 20),
             alignment: Alignment.topCenter,
             child: Text(
-              businesses[index].getName(),
+              businesses[global.swipeIndex].getName(),
               style: const TextStyle(
                 fontSize: 26,
                 fontWeight: FontWeight.bold
@@ -145,7 +146,7 @@ swippablePages(textbuttonClicked, BuildContext context, GlobalKey<ScaffoldState>
             )
           ),
           Image(
-            image: AssetImage(businesses[index].getSVGImage()), 
+            image: AssetImage(businesses[global.swipeIndex].getSVGImage()), 
             width: svgSize(),
           )
         ]
@@ -204,7 +205,7 @@ swippablePages(textbuttonClicked, BuildContext context, GlobalKey<ScaffoldState>
                   height: 40,
                   width: 150,
                   decoration: BoxDecoration(
-                    color: _color[colorIndex],
+                    color: _color[global.swipePageColorIndex],
                     borderRadius: const BorderRadius.all(Radius.circular(30))
                   ),
                   child: InkWell(
@@ -242,9 +243,9 @@ Widget dealsView() {
           const SizedBox(height: 20),
           Row(
             children: <Widget>[
-              Icon(MyFlutterApp.dollar, size: 50, color: _color[colorIndex]),
+              Icon(MyFlutterApp.dollar, size: 50, color: _color[global.swipePageColorIndex]),
               Flexible(
-                child: Text(businesses[index].getDescription(),
+                child: Text(businesses[global.swipeIndex].getDescription(),
                 style: const TextStyle(fontWeight: FontWeight.bold),),
               )
             ]
@@ -254,7 +255,7 @@ Widget dealsView() {
             children: <Widget>[
               Container(
                 margin: const EdgeInsets.only(left: 5, right: 5),
-                child: Icon(MyFlutterApp.coffee, size: 50, color: _color[colorIndex])),
+                child: Icon(MyFlutterApp.coffee, size: 50, color: _color[global.swipePageColorIndex])),
               Flexible(
                 child: Text(businesses[4].getDescription(),
                 textAlign: TextAlign.center,
@@ -265,7 +266,7 @@ Widget dealsView() {
           const SizedBox(height: 30),
           Row(
             children: <Widget>[
-              Icon(MyFlutterApp.mic, size: 50, color: _color[colorIndex]),
+              Icon(MyFlutterApp.mic, size: 50, color: _color[global.swipePageColorIndex]),
               Text(businesses[5].getDescription(),
               style: const TextStyle(fontWeight: FontWeight.bold),)
             ],
@@ -282,29 +283,29 @@ Widget newsView() {
       child: Column(
         children: <Widget>[
           Text(
-            businesses[index].getNewsTitle(),
+            businesses[global.swipeIndex].getNewsTitle(),
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              color: _color[colorIndex],
+              color: _color[global.swipePageColorIndex],
               fontSize: 17
             )
           ),
           const SizedBox(height: 20),
-          Text(businesses[index].getNewsDescription()),
+          Text(businesses[global.swipeIndex].getNewsDescription()),
           const SizedBox(height: 12),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text(businesses[index].getDate(),
+              Text(businesses[global.swipeIndex].getDate(),
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: _color[colorIndex]
+                  color: _color[global.swipePageColorIndex]
                 )
               ),
               Text('Read More',
                 style: TextStyle(
                   decoration: TextDecoration.underline,
-                  color: _color[colorIndex]
+                  color: _color[global.swipePageColorIndex]
                 )
               )
             ]

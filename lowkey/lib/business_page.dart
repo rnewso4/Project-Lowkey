@@ -25,7 +25,7 @@ class _BusinessPageState extends State<BusinessPage> {
 
     return Scaffold(
       key: _scaffoldState,
-      drawer: const Sidebar(),
+      drawer: Sidebar(),
       backgroundColor: Colors.white,
       body: Stack(
         children: <Widget>[

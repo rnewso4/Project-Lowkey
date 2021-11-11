@@ -4,12 +4,11 @@ import 'package:lowkey/components/logo_style.dart';
 import 'package:lowkey/homepage_list.dart';
 import 'package:lowkey/homepage_swipe.dart';
 import 'package:lowkey/search_businesses.dart';
-
+import 'global.dart' as global;
 import 'page_transition.dart';
 
 class Sidebar extends StatelessWidget {
-  const Sidebar({ Key? key }) : super(key: key);
-
+  Sidebar({ Key? key }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -52,7 +51,11 @@ tiles(BuildContext context, int index) {
   List<IconData> icons = [Icons.list, Icons.swipe, Icons.business];
   List<Widget> onClick = [const HomepageList(), const HomepageSwipe(), const BusinessSearch()];
   return GestureDetector(
-    onTap: () => Navigator.push( context, SlideRightRoute(page: onClick[index])),
+    onTap: () {
+      Navigator.push( context, SlideRightRoute(page: onClick[index]));
+      global.swipeIndex = 0;
+      global.swipePageColorIndex = 0;
+    },
     child: ListTile(
       leading: Icon(icons[index], color: Colors.white,),
       title: Text(

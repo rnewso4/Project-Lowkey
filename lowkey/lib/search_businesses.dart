@@ -16,7 +16,7 @@ class _BusinessSearchState extends State<BusinessSearch> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const Sidebar(),
+      drawer: Sidebar(),
       key: _scaffoldState,
       body: Stack(
         children: <Widget> [

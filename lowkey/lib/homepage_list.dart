@@ -36,7 +36,7 @@ class _HomepageListState extends State<HomepageList> {
 
     return Scaffold(
       key: _scaffoldState,
-      drawer: const Sidebar(),
+      drawer: Sidebar(),
       body: Column(
         children: <Widget>[
           Container(
