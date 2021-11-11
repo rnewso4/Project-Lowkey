@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:lowkey/business_page.dart';
 import 'package:lowkey/components/logo_style.dart';
+import 'package:lowkey/homepage_list.dart';
+import 'package:lowkey/homepage_swipe.dart';
+import 'package:lowkey/search_businesses.dart';
+
+import 'page_transition.dart';
 
 class Sidebar extends StatelessWidget {
   const Sidebar({ Key? key }) : super(key: key);
@@ -31,7 +37,7 @@ class Sidebar extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 padding: const EdgeInsets.only(top: 0),
                 itemCount: 3,
-                itemBuilder: (context, index) => tiles(index)
+                itemBuilder: (context, index) => tiles(context, index)
               ),
             ),
           ],
@@ -41,16 +47,20 @@ class Sidebar extends StatelessWidget {
   }
 }
 
-tiles(index) {
+tiles(BuildContext context, int index) {
   List<String> categories = ['List View', 'Swipe View', 'Business Pages'];
   List<IconData> icons = [Icons.list, Icons.swipe, Icons.business];
-  return ListTile(
-    leading: Icon(icons[index], color: Colors.white,),
-    title: Text(
-      categories[index],
-      style: const TextStyle(
-        color: Colors.white,
-      ),
-      ),
+  List<Widget> onClick = [const HomepageList(), const HomepageSwipe(), const BusinessSearch()];
+  return GestureDetector(
+    onTap: () => Navigator.push( context, SlideRightRoute(page: onClick[index])),
+    child: ListTile(
+      leading: Icon(icons[index], color: Colors.white,),
+      title: Text(
+        categories[index],
+        style: const TextStyle(
+          color: Colors.white,
+        ),
+        ),
+    ),
   );
 }

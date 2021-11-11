@@ -109,12 +109,6 @@ double svgSize() {
 
 swippablePages(textbuttonClicked, BuildContext context, GlobalKey<ScaffoldState> _scaffoldState) {
 
-  void onPressed() {
-  Navigator.push( context, SlideRightRoute(page: const HomepageList()));
-    index = 0;
-    colorIndex = 0;
-  }
-
   return Stack(
     children: <Widget>[
       Container(
@@ -199,7 +193,7 @@ swippablePages(textbuttonClicked, BuildContext context, GlobalKey<ScaffoldState>
                     onMenuPressed: () => _scaffoldState.currentState?.openDrawer(),
                     iconLeft: Icons.tune,
                     backgroundColor: Colors.transparent,
-                    onIconLeftPressed: onPressed,
+                    onIconRightPressed: () {},
                   )
                 ]
               ),

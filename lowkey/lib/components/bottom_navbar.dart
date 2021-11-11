@@ -5,13 +5,13 @@ class BottomNavbar extends StatelessWidget {
   final Function onMenuPressed;
   final IconData iconLeft;
   final Color backgroundColor;
-  final Function onIconLeftPressed;
+  final Function onIconRightPressed;
 
   const BottomNavbar({ 
     Key? key, required this.onMenuPressed, 
     required this.iconLeft, 
     required this.backgroundColor,
-    required this.onIconLeftPressed
+    required this.onIconRightPressed
   }) : super(key: key);
 
   @override
@@ -31,7 +31,7 @@ class BottomNavbar extends StatelessWidget {
               child: const Icon(Icons.menu, size: 40, color: Colors.black),
             ),
             GestureDetector(
-              onTap: () => onIconLeftPressed(),
+              onTap: () => onIconRightPressed(),
               child: Icon(iconLeft, size: 40, color: Colors.black)
             )
           ]

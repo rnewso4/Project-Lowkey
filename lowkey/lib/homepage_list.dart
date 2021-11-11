@@ -63,7 +63,7 @@ class _HomepageListState extends State<HomepageList> {
             onMenuPressed: () => _scaffoldState.currentState?.openDrawer(),
             iconLeft: Icons.tune, 
             backgroundColor: Colors.white,
-            onIconLeftPressed: () => Navigator.push(context, SlideRightRoute(page: const HomepageSwipe())),
+            onIconRightPressed: () {},
           )
         ]
       )
