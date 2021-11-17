@@ -5,7 +5,7 @@ import 'package:lowkey/components/news.dart';
 
 class Business {
   String _name = "";
-  String _address = "";
+  //String _address = "";
   String _description = "";
   int _longitude = 0;
   int _ladtitude = 0;
@@ -14,30 +14,45 @@ class Business {
 
   late Manager _owner;
 
-  List<Deals> listOfDeals = [];
-  List<Deals> archivedDeals = [];
+  List<Deals> _listOfDeals = [];
+  List<Deals> _archivedDeals = [];
 
-  List<News> listOfNews = [];
-  List<News> archivedNews = [];
+  List<News> _listOfNews = [];
+  List<News> _archivedNews = [];
 
-  late BussinessCategory styleOfBussiness;
+  late BussinessCategory _styleOfBussiness;
 
-  late int distanceFromUser;
+  late int _distanceFromUser;
 
-  Business(String name, String address, Manager owner) {
+  Business(
+      String name, String description, BussinessCategory type, Manager owner) {
     _name = name;
-    _address = address;
+    _description = description;
+    _styleOfBussiness = type;
     _owner = owner;
   }
 
-  void addDeals(Deals newDeal) {
-    listOfDeals.add(newDeal);
-    listOfDeals.sort((a, b) => a.getEndDate().compareTo(b.getEndDate()));
+  String getName() {
+    return _name;
   }
 
-  void addNewws(News newNews) {
-    listOfNews.add(newNews);
-    listOfNews.sort((a, b) => a.getDate().compareTo(b.getDate()));
+  Deals getDeal(int index) {
+    return _listOfDeals[index];
+  }
+
+  void addDeals(Deals newDeal) {
+    newDeal.setBussinessName(_name);
+    _listOfDeals.add(newDeal);
+    _listOfDeals.sort((a, b) => a.getStartDate().compareTo(b.getStartDate()));
+  }
+
+  News getNews(int index) {
+    return _listOfNews[index];
+  }
+
+  void addNews(News newNews) {
+    _listOfNews.add(newNews);
+    _listOfNews.sort((a, b) => a.getDate().compareTo(b.getDate()));
   }
 
   void changeLogo(String logoPath) {

@@ -6,4 +6,12 @@ class Account {
     _email = email;
     _password = password;
   }
+
+  String getEmail() {
+    return _email;
+  }
+
+  String getPassword() {
+    return _password;
+  }
 }
