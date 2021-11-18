@@ -1,3 +1,3 @@
-enum BussinessCategory { Food, Coffee, Bar, Other }
+enum BussinessCategory { food, coffee, bar, other }
 
-enum Priority { Customer, Manager, Admin }
+enum Priority { customer, manager, admin }

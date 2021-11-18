@@ -9,6 +9,10 @@ class News {
     _date = DateTime.now();
   }
 
+  void updateDate(String date) {
+    _date = DateTime.parse(date);
+  }
+
   DateTime getDate() {
     return _date;
   }

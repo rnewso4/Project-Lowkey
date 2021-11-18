@@ -12,10 +12,10 @@ class Manager extends Account {
 
   Manager(
       String email, String password, String bussinessNumber, String employID)
-      : super(email, password, Priority.Manager) {
+      : super(email, password, Priority.manager) {
     _bussinessNumber = bussinessNumber;
     _employID = employID;
-    priorityLVL = Priority.Manager;
+    priorityLVL = Priority.manager;
   }
 
   String verifyBusiness() {
