@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lowkey/components/logo_style.dart';
-
+import 'package:lowkey/forgot_password.dart';
+import 'package:lowkey/signup_page.dart';
 import 'components/page_transition.dart';
 import 'homepage_list.dart';
 
@@ -13,7 +14,6 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  var _tries = 3;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,9 +110,9 @@ class _LoginState extends State<Login> {
               )
             ),
             GestureDetector(
-              onTap: () => setState(() {
-                _tries -= 1;
-              }),
+              onTap: () => {Navigator.push(
+                  context, 
+                  MaterialPageRoute(builder: (context) => const Signup()))},
               child: Container(
                 height: 50,
                 width: 300,
@@ -133,16 +133,21 @@ class _LoginState extends State<Login> {
                 )
               )
             ),
-            if (_tries <= 0) Container(
-              padding: const EdgeInsets.only(top: 30, right: 50),
-              alignment: Alignment.topRight,
-              child: const Text(
-                'Forgot your password?',
-                style: TextStyle(
-                  decoration: TextDecoration.underline,
-                  fontWeight: FontWeight.bold
+            GestureDetector(
+              onTap:  () => {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const ForgotPassword()))
+              },
+              child: Container(
+                padding: const EdgeInsets.only(top: 30, right: 50),
+                alignment: Alignment.topRight,
+                child: const Text(
+                  'Forgot your password?',
+                  style: TextStyle(
+                    decoration: TextDecoration.underline,
+                    fontWeight: FontWeight.bold
+                  )
                 )
-              )
+              ),
             )
           ]
         )

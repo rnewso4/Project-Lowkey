@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:overlay_support/overlay_support.dart';
 import 'login.dart';
 
 void main() {
@@ -10,13 +11,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Lowkey',
-      theme: ThemeData(
-        primarySwatch: Colors.grey,
+    return OverlaySupport(
+      child: MaterialApp(
+        title: 'Lowkey',
+        theme: ThemeData(
+          primarySwatch: Colors.grey,
+        ),
+        home: const Login()
       ),
-      home: const Login()
     );
   }
 }
-
