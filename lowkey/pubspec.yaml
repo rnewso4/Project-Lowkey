@@ -13,6 +13,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   dots_indicator: ^2.0.0
   cloud_firestore: ^2.5.3
+  google_fonts: ^2.1.0
+  overlay_support: ^1.2.1
+  email_validator: ^2.0.1
+  image_picker: ^0.8.4+4
 
 dev_dependencies:
   flutter_test:
