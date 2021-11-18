@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lowkey/create_business_page.dart';
-import 'package:lowkey/forgot_password.dart';
-import 'package:lowkey/manager_page.dart';
-import 'package:lowkey/signup_page.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'login.dart';
 
@@ -21,7 +17,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.grey,
         ),
-        home: const ManagerPage()
+        home: const Login()
       ),
     );
   }
