@@ -16,9 +16,11 @@ class Business {
 
   List<Deals> _listOfDeals = [];
   List<Deals> _archivedDeals = [];
+  int _dealIndex = 0;
 
   List<News> _listOfNews = [];
   List<News> _archivedNews = [];
+  int _newsIndex = 0;
 
   late BussinessCategory _styleOfBussiness;
 
@@ -42,8 +44,13 @@ class Business {
 
   void addDeals(Deals newDeal) {
     newDeal.setBussinessName(_name);
+    _dealIndex++;
     _listOfDeals.add(newDeal);
     _listOfDeals.sort((a, b) => a.getStartDate().compareTo(b.getStartDate()));
+  }
+
+  int getDealIndex() {
+    return _dealIndex;
   }
 
   News getNews(int index) {
@@ -52,7 +59,12 @@ class Business {
 
   void addNews(News newNews) {
     _listOfNews.add(newNews);
+    _newsIndex++;
     _listOfNews.sort((a, b) => a.getDate().compareTo(b.getDate()));
+  }
+
+  int getNewsIndex() {
+    return _newsIndex;
   }
 
   void changeLogo(String logoPath) {

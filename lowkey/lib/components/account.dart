@@ -1,10 +1,15 @@
+import 'package:lowkey/components/bussiness_category.dart';
+
 class Account {
   String _email = "";
   String _password = "";
 
-  Account(String email, String password) {
+  late Priority _priorityType;
+
+  Account(String email, String password, Priority priorityLVL) {
     _email = email;
     _password = password;
+    _priorityType = priorityLVL;
   }
 
   String getEmail() {
@@ -13,5 +18,9 @@ class Account {
 
   String getPassword() {
     return _password;
+  }
+
+  Priority getPriority() {
+    return _priorityType;
   }
 }

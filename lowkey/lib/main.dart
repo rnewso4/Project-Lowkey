@@ -17,26 +17,41 @@ void main() async {
   await Firebase.initializeApp();
   runApp(const MyApp());
 
-  generateDemoBusiness();
+  //Below is used to test Deals Order List. (Finished)
+
+  /*List<Customer> testAccount = getCurrentRegisterCustomerAccounts();
+  List<Business> testBusiness = generateDemoBusiness();
+  testAccount[0].addFavoriteBusiness(testBusiness.last);
+
+  if (testAccount[0].getPriority() == Priority.Customer) {
+    Customer currentCustomer = testAccount[0];
+    generateDealsOrder(currentCustomer, testBusiness);
+  } */
 }
 
-Account checkLogin(String email, String password) {
-  List<Account> availableAccounts = getCurrentRegisterAccounts();
-  int accountIndex = -1;
-  bool found = false;
+bool checkCustomerLogin(String email, String password) {
+  List<Customer> availableCustomerAccounts =
+      getCurrentRegisterCustomerAccounts();
 
-  for (int i = 0; i < availableAccounts.length && !found; i++) {
-    if (availableAccounts[i].getEmail() == email &&
-        availableAccounts[i].getPassword() == password) {
-      found = true;
-      accountIndex = i;
+  for (int i = 0; i < availableCustomerAccounts.length; i++) {
+    if (availableCustomerAccounts[i].getEmail() == email &&
+        availableCustomerAccounts[i].getPassword() == password) {
+      return true;
     }
   }
-  if (accountIndex != -1) {
-    return availableAccounts[accountIndex];
-  } else {
-    return Account("Bad", "Bad");
+  return false;
+}
+
+bool checkManagerLogin(String email, String password) {
+  List<Manager> availableManagerAccounts = getCurrentRegisterManagerAccounts();
+
+  for (int i = 0; i < availableManagerAccounts.length; i++) {
+    if (availableManagerAccounts[i].getEmail() == email &&
+        availableManagerAccounts[i].getPassword() == password) {
+      return true;
+    }
   }
+  return false;
 }
 
 List<Business> generateDemoBusiness() {
@@ -133,17 +148,66 @@ List<Business> generateDemoBusiness() {
   return retVal;
 }
 
-List<Account> getCurrentRegisterAccounts() {
-  List<Account> retVal = [];
-  retVal.add(Manager("admin@lsu.edu", "123abc", "(225)123-4567", "2021"));
+List<Customer> getCurrentRegisterCustomerAccounts() {
+  List<Customer> retVal = [];
+  retVal.add(Customer("user@lsu.edu", "Lowkey8"));
   retVal.add(Customer("customer@lsu.edu", "Lowkey8"));
+
+  return retVal;
+}
+
+List<Manager> getCurrentRegisterManagerAccounts() {
+  List<Manager> retVal = [];
+  retVal.add(Manager("admin@lsu.edu", "123abc", "(225)123-4567", "2021"));
+
   return retVal;
 }
 
 List<Deals> generateDealsOrder(
     Customer currentUser, List<Business> availableBusiness) {
+  List<Business> favoritedBusiness = currentUser.getFavoritedBusiness();
+  List<Business> notFavoritedBusiness = [];
+
+  List<Deals> dealsFromFavoriteBusiness = [];
+  List<Deals> dealsFromRemainingBusiness = [];
+
   List<Deals> retVal = [];
 
+  for (int i = 0; i < availableBusiness.length; i++) {
+    bool favoredBusiness = false;
+    for (int j = 0; j < favoritedBusiness.length && !favoredBusiness; j++) {
+      if (availableBusiness[i].getName() == favoritedBusiness[j].getName()) {
+        favoredBusiness = true;
+      }
+    }
+    if (!favoredBusiness) {
+      notFavoritedBusiness.add(availableBusiness[i]);
+    }
+  }
+
+  for (int k = 0; k < favoritedBusiness.length; k++) {
+    for (int l = 0; l < favoritedBusiness[k].getDealIndex(); l++) {
+      dealsFromFavoriteBusiness.add(favoritedBusiness[k].getDeal(l));
+    }
+  }
+  dealsFromFavoriteBusiness
+      .sort((a, b) => a.getStartDate().compareTo(b.getStartDate()));
+
+  for (int o = 0; o < notFavoritedBusiness.length; o++) {
+    for (int p = 0; p < notFavoritedBusiness[o].getDealIndex(); p++) {
+      dealsFromRemainingBusiness.add(notFavoritedBusiness[o].getDeal(p));
+    }
+  }
+  dealsFromRemainingBusiness
+      .sort((a, b) => a.getStartDate().compareTo(b.getStartDate()));
+
+  retVal = dealsFromFavoriteBusiness + dealsFromRemainingBusiness;
+
+  for (int i = 0; i < retVal.length; i++) {
+    print(retVal[i].getName() +
+        " Start date: " +
+        retVal[i].getStartDate().toString());
+  }
   return retVal;
 }
 

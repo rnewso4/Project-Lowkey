@@ -12,7 +12,7 @@ class Manager extends Account {
 
   Manager(
       String email, String password, String bussinessNumber, String employID)
-      : super(email, password) {
+      : super(email, password, Priority.Manager) {
     _bussinessNumber = bussinessNumber;
     _employID = employID;
     priorityLVL = Priority.Manager;
@@ -24,6 +24,4 @@ class Manager extends Account {
 
     return retVal;
   }
-
-  
 }
