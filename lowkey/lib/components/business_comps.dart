@@ -3,8 +3,6 @@ import 'package:lowkey/deals_page.dart';
 
 import 'app_icons.dart';
 
-    bool isEmpty = true;
-
 class DealsComponent extends StatelessWidget {
   const DealsComponent({ Key? key }) : super(key: key);
 
@@ -29,7 +27,7 @@ class DealsComponent extends StatelessWidget {
             margin: const EdgeInsets.only(top: 20, bottom: 30),
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: !isEmpty ? 7 : 1,
+              itemCount: 7,
               itemBuilder: (context, index) => dealsCard(context)
             )
           ),
@@ -43,7 +41,7 @@ class DealsComponent extends StatelessWidget {
               )
             )
           ),
-          !isEmpty ? Container(
+          Container(
             height: 140,
             margin: const EdgeInsets.only(top: 20, bottom: 27),
             child: ListView.builder(
@@ -51,12 +49,12 @@ class DealsComponent extends StatelessWidget {
               itemCount: 7,
               itemBuilder: (context, index) => newsCard()
             )
-          ) : SizedBox(height: 40),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text('Reviews', style: categoryTextStyle()),
-              if (!isEmpty) Row(
+              Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: const <Widget>[
                   Text('4.3', style: TextStyle(
@@ -74,8 +72,9 @@ class DealsComponent extends StatelessWidget {
               )
             ]
           ),
-          if (!isEmpty) ListView.builder(
+          ListView.builder(
             physics: const NeverScrollableScrollPhysics(),
+            //scrollDirection: Axis.vertical,
             shrinkWrap: true,
             itemCount: 3,
             itemBuilder: (context, index) => reviews()

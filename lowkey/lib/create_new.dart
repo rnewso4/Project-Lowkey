@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:lowkey/business_page.dart';
 
 final List<Color> _color = [
   const Color(0xff794016),
@@ -11,8 +10,7 @@ final List<Color> _color = [
 ];
 
 class CreateNew extends StatefulWidget {
-  final bool? hasDeals;
-  const CreateNew({Key? key, this.hasDeals}) : super(key: key);
+  const CreateNew({Key? key}) : super(key: key);
   @override
   _CreateNewState createState() => _CreateNewState();
 }
@@ -26,9 +24,6 @@ class _CreateNewState extends State<CreateNew> {
     });
   }
 
-  var title1 = 'Pick a category for your deal';
-  var title2 = 'Create your first deal!';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,8 +34,8 @@ class _CreateNewState extends State<CreateNew> {
                 IconButton(
                     onPressed: () => Navigator.pop(context),
                     icon: const Icon(Icons.arrow_back_ios)),
-                Text((widget.hasDeals ?? true) ?  title1 : title2,
-                    style: const TextStyle(
+                const Text('Pick a category for your deal',
+                    style: TextStyle(
                       fontSize: 20,
                       fontFamily: 'helvetica',
                       color: Colors.black,
@@ -121,9 +116,7 @@ class _CreateNewState extends State<CreateNew> {
                       keyboardType: TextInputType.text,
                     )),
                 InkWell(
-                    onTap: () => {Navigator.push(
-                  context, 
-                  MaterialPageRoute(builder: (context) => const BusinessPage()))},
+                    onTap: () => Navigator.pop(context),
                     child: Container(
                         height: 40,
                         width: 125,
