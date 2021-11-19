@@ -18,8 +18,6 @@ class HomepageSwipe extends StatefulWidget {
   _HomepageSwipeState createState() => _HomepageSwipeState();
 }
 
-//TODO: add more icons for the deals page
-
 var _isDealsView = true;
 var numOfDots = 3;
 

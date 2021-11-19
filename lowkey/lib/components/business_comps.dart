@@ -51,7 +51,7 @@ class DealsComponent extends StatelessWidget {
               itemCount: 7,
               itemBuilder: (context, index) => newsCard()
             )
-          ) : SizedBox(height: 40),
+          ) : const SizedBox(height: 40),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[

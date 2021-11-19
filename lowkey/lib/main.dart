@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lowkey/create_business_page.dart';
-import 'package:lowkey/forgot_password.dart';
-import 'package:lowkey/manager_page.dart';
-import 'package:lowkey/signup_page.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'login.dart';
 
@@ -17,11 +13,20 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return OverlaySupport(
       child: MaterialApp(
+<<<<<<< HEAD
           title: 'Lowkey',
           theme: ThemeData(
             primarySwatch: Colors.grey,
           ),
           home: const Login()),
+=======
+        title: 'Lowkey',
+        theme: ThemeData(
+          primarySwatch: Colors.grey,
+        ),
+        home: const Login()
+      ),
+>>>>>>> dc34006a0c2979d4b15d57bf9e678a2354ea51f3
     );
   }
 }

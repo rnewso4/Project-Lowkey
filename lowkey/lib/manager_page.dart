@@ -41,7 +41,7 @@ class _ManagerPageState extends State<ManagerPage> {
                     width: 150,
                     image: AssetImage(businesses[3].getLogo())
                   )
-                ) : SizedBox(height: 150),
+                ) : const SizedBox(height: 150),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: const Text(
