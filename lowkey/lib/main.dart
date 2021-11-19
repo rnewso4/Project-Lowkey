@@ -17,12 +17,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return OverlaySupport(
       child: MaterialApp(
-        title: 'Lowkey',
-        theme: ThemeData(
-          primarySwatch: Colors.grey,
-        ),
-        home: const ManagerPage()
-      ),
+          title: 'Lowkey',
+          theme: ThemeData(
+            primarySwatch: Colors.grey,
+          ),
+          home: const Login()),
     );
   }
 }
