@@ -7,14 +7,14 @@ import 'components/sidebar.dart';
 
 bool isEmpty = true;
 
-class ManagerPage extends StatefulWidget {
+class ManagerPage1 extends StatefulWidget {
   final bool? showBackButton;
-  const ManagerPage({Key? key, this.showBackButton}) : super(key: key);
+  const ManagerPage1({Key? key, this.showBackButton}) : super(key: key);
   @override
-  _ManagerPageState createState() => _ManagerPageState();
+  _ManagerPage1State createState() => _ManagerPage1State();
 }
 
-class _ManagerPageState extends State<ManagerPage> {
+class _ManagerPage1State extends State<ManagerPage1> {
   void onPressed() {
     Navigator.push(
       context, 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lowkey/analytics_page.dart';
 import 'package:lowkey/components/logo_style.dart';
 import 'package:lowkey/forgot_password.dart';
 import 'package:lowkey/signup_page.dart';
@@ -14,6 +15,21 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  final myController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    myController.dispose();
+    super.dispose();
+  }
+
+  void checkAccount() {
+    myController.text == 'lowkey' 
+    ? Navigator.push( context, SlideRightRoute(page: const AnalyticsPage()))
+    : Navigator.push( context, SlideRightRoute(page: const HomepageList()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,11 +86,12 @@ class _LoginState extends State<Login> {
               height: 50,
               width: 300,
               margin: const EdgeInsets.only(top: 25),
-              child: const Material(
+              child: Material(
                 elevation: 2,
                 shadowColor: Colors.black,
                 child: TextField(
-                  decoration: InputDecoration(
+                  controller: myController,
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(5)), 
                       borderSide: BorderSide.none
@@ -87,7 +104,7 @@ class _LoginState extends State<Login> {
               )
             ),
             GestureDetector(
-              onTap: () => Navigator.push( context, SlideRightRoute(page: const HomepageList())),
+              onTap: () => checkAccount(),
               child: Container(
                 height: 50,
                 width: 300,

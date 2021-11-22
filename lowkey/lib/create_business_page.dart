@@ -12,8 +12,6 @@ final List<Color> _color = [
   const Color(0xff000000)
 ];
 
-final _formKey = GlobalKey<FormState>();
-
 class CreateBusiness extends StatefulWidget {
   const CreateBusiness({Key? key}) : super(key: key);
   @override
@@ -21,6 +19,7 @@ class CreateBusiness extends StatefulWidget {
 }
 
 class _CreateBusinessState extends State<CreateBusiness> {
+  final _formKey = GlobalKey<FormState>();
   var _index = 4;
 
   updateColor(int num) {
@@ -89,7 +88,7 @@ class _CreateBusinessState extends State<CreateBusiness> {
                   validator: (password) => (password == null || password.isEmpty) ? 'Text is empty' : null
                 )),
               InkWell(
-                onTap: () => onSubmit(context),
+                onTap: () => onSubmit(context, _formKey),
                 child: Container(
                   margin: const EdgeInsets.only(top:20),
                     height: 40,
@@ -140,7 +139,7 @@ categories(int index) {
               ])));
 }
 
-onSubmit(BuildContext context) {
+onSubmit(BuildContext context, GlobalKey<FormState> _formKey) {
    if (_formKey.currentState!.validate()) {
      Navigator.push( context, 
       MaterialPageRoute(builder: (context) => const CreateNew(/*hasDeals: false*/)));

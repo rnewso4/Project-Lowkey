@@ -6,8 +6,6 @@ import 'package:lowkey/create_business_page.dart';
 import 'components/page_transition.dart';
 import 'homepage_list.dart';
 
-final _formKey = GlobalKey<FormState>();
-
 class Signup extends StatefulWidget {
   const Signup ({Key? key}) : super(key: key);
 
@@ -16,6 +14,7 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+  final _formKey = GlobalKey<FormState>();
   bool isChecked = false;
   @override
   Widget build(BuildContext context) {
@@ -122,7 +121,7 @@ class _SignupState extends State<Signup> {
                 ],
               ),
               GestureDetector(
-                onTap: () => nextPage(context, isChecked),
+                onTap: () => nextPage(context, isChecked, _formKey),
                 child: Container(
                   height: 50,
                   width: 300,
@@ -152,7 +151,7 @@ class _SignupState extends State<Signup> {
   }
 }
 
-nextPage(BuildContext context, bool isChecked) {
+nextPage(BuildContext context, bool isChecked, GlobalKey<FormState> _formKey) {
   if (_formKey.currentState!.validate()) {
      isChecked ? Navigator.push( context, SlideRightRoute(page: const CreateBusiness())) 
   : Navigator.push(context, SlideRightRoute(page: const HomepageList()));
