@@ -3,7 +3,7 @@ import 'package:lowkey/deals_page.dart';
 
 import 'app_icons.dart';
 
-    bool isEmpty = true;
+bool isEmpty = true;
 
 class DealsComponent extends StatelessWidget {
   const DealsComponent({ Key? key }) : super(key: key);
@@ -20,38 +20,29 @@ class DealsComponent extends StatelessWidget {
               'Deals',
               style: TextStyle(
                 fontSize: 25,
-                letterSpacing: 2.0
-              )
-            )
-          ),
+                letterSpacing: 2.0))),
           Container(
             height: 140,
             margin: const EdgeInsets.only(top: 20, bottom: 30),
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: !isEmpty ? 7 : 1,
-              itemBuilder: (context, index) => dealsCard(context)
-            )
-          ),
+              itemBuilder: (context, index) => dealsCard(context))),
           const Align(
             alignment: Alignment.topLeft,
             child: Text(
               'News Stories',
               style: TextStyle(
                 fontSize: 25,
-                letterSpacing: 2.0
-              )
-            )
-          ),
+                letterSpacing: 2.0))),
           !isEmpty ? Container(
             height: 140,
             margin: const EdgeInsets.only(top: 20, bottom: 27),
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 7,
-              itemBuilder: (context, index) => newsCard()
-            )
-          ) : const SizedBox(height: 40),
+              itemBuilder: (context, index) => newsCard())) 
+           : const SizedBox(height: 40),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -61,19 +52,12 @@ class DealsComponent extends StatelessWidget {
                 children: const <Widget>[
                   Text('4.3', style: TextStyle(
                     fontSize: 25,
-                    fontWeight: FontWeight.w700
-                  )
-                  ),
+                    fontWeight: FontWeight.w700)),
                   Padding(
                     padding: EdgeInsets.only(bottom: 3),
                     child: Text(' out of 5', style: TextStyle(
-                      color: Colors.grey
-                    ))
-                  )
-                ]
-              )
-            ]
-          ),
+                      color: Colors.grey)))
+                ])]),
           if (!isEmpty) ListView.builder(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
@@ -111,9 +95,7 @@ dealsCard(BuildContext context) {
                     'Posted 23 hours ago',
                     style: TextStyle(
                       fontSize: 11,
-                      color: Color(0xff8E8E8E)
-                    )
-                  ),
+                      color: Color(0xff8E8E8E))),
                   Icon(MyFlutterApp.dollar, size: 20, color: Colors.grey),
                 ]
               )
@@ -146,9 +128,7 @@ newsCard() {
                   'Posted 23 hours ago',
                   style: TextStyle(
                     fontSize: 11,
-                    color: Color(0xff8E8E8E)
-                  )
-                ),
+                    color: Color(0xff8E8E8E))),
                 Icon(MyFlutterApp.dollar, size: 20, color: Colors.grey),
               ]
             )
@@ -175,13 +155,11 @@ return Container(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: const <Widget>[
             Text('Mike', style: TextStyle(fontWeight: FontWeight.bold)),
-            Text('Oct 28')
-          ]),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            child: Text(stringL),
-          ),
-          const Divider(thickness: 3,)
+            Text('Oct 28')]),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          child: Text(stringL),),
+        const Divider(thickness: 3,)
       ],
     )
   );

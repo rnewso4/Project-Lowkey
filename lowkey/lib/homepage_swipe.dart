@@ -92,17 +92,12 @@ class _HomepageSwipeState extends State<HomepageSwipe> {
 }
 
 double svgSize() {
-  double size = 0.0;
-  if (businesses[global.swipeIndex].getName() == 'Highland Coffee') {
-    size = 280.0;
+  switch (businesses[global.swipeIndex].getName()) {
+    case 'Highland Coffee': return 280.0;
+    case 'The Revelry': return 180.0; 
+    case 'Reginelli’s Pizzeria': return 240.0;
   }
-  else if (businesses[global.swipeIndex].getName() == 'The Revelry') {
-    size = 180.0;
-  }
-  else if (businesses[global.swipeIndex].getName() == 'Reginelli’s Pizzeria') {
-    size = 240.0;
-  }
-  return size;
+  return 200.0;
 }
 
 swippablePages(textbuttonClicked, BuildContext context, GlobalKey<ScaffoldState> _scaffoldState) {
@@ -112,9 +107,7 @@ swippablePages(textbuttonClicked, BuildContext context, GlobalKey<ScaffoldState>
         margin: const EdgeInsets.only(top: 60, left: 10),
         child: Image(
           image: AssetImage(businesses[global.swipeIndex].getLogo()), 
-          width: 70
-        )
-      ),
+          width: 70)),
       Container(
         alignment: Alignment.topCenter,
         margin: const EdgeInsets.only(top: 60),
@@ -124,10 +117,7 @@ swippablePages(textbuttonClicked, BuildContext context, GlobalKey<ScaffoldState>
           decorator: const DotsDecorator(
             color: Colors.black,
             activeSize: Size(19, 19),
-            activeColor: Colors.black
-          )
-        )
-      ),
+            activeColor: Colors.black))),
       Column(
         children: <Widget>[
           Container(
@@ -137,16 +127,10 @@ swippablePages(textbuttonClicked, BuildContext context, GlobalKey<ScaffoldState>
               businesses[global.swipeIndex].getName(),
               style: const TextStyle(
                 fontSize: 26,
-                fontWeight: FontWeight.bold
-              )
-            )
-          ),
+                fontWeight: FontWeight.bold))),
           Image(
             image: AssetImage(businesses[global.swipeIndex].getSVGImage()), 
-            width: svgSize(),
-          )
-        ]
-      ),
+            width: svgSize())]),
       Align(
         alignment: Alignment.bottomCenter,
         child: Container(
@@ -155,9 +139,7 @@ swippablePages(textbuttonClicked, BuildContext context, GlobalKey<ScaffoldState>
             color: Color(0xffF4F4F4),
             borderRadius: BorderRadius.only(
               topRight: Radius.circular(50.0),
-              topLeft: Radius.circular(50.0)
-            )
-          ),
+              topLeft: Radius.circular(50.0))),
           child: Stack(
             children: <Widget> [
               Column(
@@ -171,29 +153,20 @@ swippablePages(textbuttonClicked, BuildContext context, GlobalKey<ScaffoldState>
                           onPressed: !_isDealsView ? textbuttonClicked : null,
                           child: Text(
                             'Recent Deals', 
-                            style: _isDealsView ? dealsAndNewsStyle() : const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)
-                          )
-                        ),
+                            style: _isDealsView ? dealsAndNewsStyle() : const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold))),
                         const SizedBox(width: 40),
                         TextButton(
                           onPressed: _isDealsView ? textbuttonClicked : null,
                           child: Text(
                             'Top News', 
                             style: !_isDealsView ? dealsAndNewsStyle() : const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)
-                          )
-                        )
-                      ]
-                    )
-                  ),
+                          ))])),
                   _isDealsView ? dealsView() : newsView(),
                   BottomNavbar(
                     onMenuPressed: () => _scaffoldState.currentState?.openDrawer(),
                     iconLeft: Icons.tune,
                     backgroundColor: Colors.transparent,
-                    onIconRightPressed: () {},
-                  )
-                ]
-              ),
+                    onIconRightPressed: () {})]),
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
@@ -202,13 +175,11 @@ swippablePages(textbuttonClicked, BuildContext context, GlobalKey<ScaffoldState>
                   width: 150,
                   decoration: BoxDecoration(
                     color: _color[global.swipePageColorIndex],
-                    borderRadius: const BorderRadius.all(Radius.circular(30))
-                  ),
+                    borderRadius: const BorderRadius.all(Radius.circular(30))),
                   child: InkWell(
                     onTap: () => Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const BusinessPage(showBackButton: true))
-                    ),
+                      MaterialPageRoute(builder: (context) => const BusinessPage(showBackButton: true))),
                     child: const Center(
                       child: Text(
                         'OPEN',
@@ -242,10 +213,7 @@ Widget dealsView() {
               Icon(MyFlutterApp.dollar, size: 50, color: _color[global.swipePageColorIndex]),
               Flexible(
                 child: Text(businesses[global.swipeIndex].getDescription(),
-                style: const TextStyle(fontWeight: FontWeight.bold),),
-              )
-            ]
-          ),
+                style: const TextStyle(fontWeight: FontWeight.bold)))]),
           const SizedBox(height: 30),
           Row(
             children: <Widget>[
@@ -255,10 +223,7 @@ Widget dealsView() {
               Flexible(
                 child: Text(businesses[4].getDescription(),
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontWeight: FontWeight.bold),),
-              )
-            ],
-          ),
+                style: const TextStyle(fontWeight: FontWeight.bold)))]),
           const SizedBox(height: 30),
           Row(
             children: <Widget>[
@@ -267,7 +232,8 @@ Widget dealsView() {
               style: const TextStyle(fontWeight: FontWeight.bold),)
             ],
           )
-        ]),
+        ]
+      ),
     )
   );
 }
@@ -283,9 +249,7 @@ Widget newsView() {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: _color[global.swipePageColorIndex],
-              fontSize: 17
-            )
-          ),
+              fontSize: 17)),
           const SizedBox(height: 20),
           Text(businesses[global.swipeIndex].getNewsDescription()),
           const SizedBox(height: 12),
@@ -295,9 +259,7 @@ Widget newsView() {
               Text(businesses[global.swipeIndex].getDate(),
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: _color[global.swipePageColorIndex]
-                )
-              ),
+                  color: _color[global.swipePageColorIndex])),
               Text('Read More',
                 style: TextStyle(
                   decoration: TextDecoration.underline,

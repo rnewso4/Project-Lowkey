@@ -20,28 +20,21 @@ class _BusinessSearchState extends State<BusinessSearch> {
       key: _scaffoldState,
       appBar: AppBar(
         title: const Text('Search',
-            style: TextStyle(
-              color: Colors.black,
-            )),
+        style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
         actions: <Widget>[
           IconButton(
-              icon: const Icon(Icons.search),
-              onPressed: () {
-                showSearch(context: context, delegate: SearchBusiness());
-              })
-        ],
-      ),
-      body: Stack(children: <Widget>[
-        const Center(
-          child: Text('HI'),
-        ),
+            icon: const Icon(Icons.search),
+            onPressed: () =>showSearch(context: context, delegate: SearchBusiness()))]),
+      body: Stack(
+        children: <Widget>[
         BottomNavbar(
-            onMenuPressed: () => _scaffoldState.currentState?.openDrawer(),
-            iconLeft: Icons.tune,
-            backgroundColor: Colors.white,
-            onIconRightPressed: () {})
-      ]),
+          onMenuPressed: () => _scaffoldState.currentState?.openDrawer(),
+          iconLeft: Icons.tune,
+          backgroundColor: Colors.white,
+          onIconRightPressed: () {})
+        ]
+      ),
     );
   }
 }
@@ -56,8 +49,8 @@ class SearchBusiness extends SearchDelegate<String> {
     'Walk-on\'s',
     'Superior Grill',
     'Cheeba Hut',
-    'Zippy\'s'
-        'Chipotle',
+    'Zippy\'s',
+    'Chipotle',
     'Chick-fil-a',
     'Panera Bread',
     'Counter Culture'
@@ -89,7 +82,8 @@ class SearchBusiness extends SearchDelegate<String> {
 
   @override
   Widget buildResults(BuildContext context) {
-    throw UnimplementedError();
+    //throw UnimplementedError();
+    return Text('results');
   }
 
   @override

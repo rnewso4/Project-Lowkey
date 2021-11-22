@@ -28,12 +28,10 @@ class BottomNavbar extends StatelessWidget {
           children: <Widget>[
             GestureDetector(
               onTap: () => onMenuPressed(),
-              child: const Icon(Icons.menu, size: 40, color: Colors.black),
-            ),
+              child: const Icon(Icons.menu, size: 40, color: Colors.black)),
             GestureDetector(
               onTap: () => onIconRightPressed(),
-              child: Icon(iconLeft, size: 40, color: Colors.black)
-            )
+              child: Icon(iconLeft, size: 40, color: Colors.black))
           ]
         )
       )

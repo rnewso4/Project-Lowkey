@@ -17,33 +17,29 @@ class Sidebar extends StatelessWidget {
         child: Stack(
           children: <Widget>[
             Column(
-              children: [
+              children: <Widget>[
                 Container(
-                    height: 50,
-                    margin: const EdgeInsets.only(top: 45, bottom: 25),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Image(
-                            height: 50,
-                            image: AssetImage('lib/assets/officiallogo2.png')),
-                        const SizedBox(width: 8),
-                        Text('LOWKEY', style: sidebarLogo),
-                      ],
-                    )),
+                  height: 50,
+                  margin: const EdgeInsets.only(top: 45, bottom: 25),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      const Image(
+                        height: 50,
+                        image: AssetImage('lib/assets/officiallogo2.png')),
+                      const SizedBox(width: 8),
+                      Text('LOWKEY', style: sidebarLogo)])),
                 Expanded(
                   child: ListView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      padding: const EdgeInsets.only(top: 0),
-                      itemCount: 4,
-                      itemBuilder: (context, index) => tiles(context, index)),
-                ),
-              ],
-            ),
+                    physics: const NeverScrollableScrollPhysics(),
+                    padding: const EdgeInsets.only(top: 0),
+                    itemCount: 4,
+                    itemBuilder: (context, index) => tiles(context, index)))]),
             Container(
-                margin: const EdgeInsets.only(bottom: 20),
-                alignment: Alignment.bottomCenter,
-                child: tiles(context, 4))
+              margin: const EdgeInsets.only(bottom: 20),
+              alignment: Alignment.bottomCenter,
+              child: tiles(context, 4)
+            )
           ],
         ),
       ),

@@ -31,22 +31,18 @@ class _BusinessPageState extends State<BusinessPage> {
           Container(
             margin: const EdgeInsets.only(top:50),
             child: ListView(
-              children: [
+              children: <Widget>[
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 120),
                   padding: const EdgeInsets.symmetric(vertical: 30),
                   child: Image(
                     width: 150,
-                    image: AssetImage(businesses[3].getLogo())
-                  )
-                ),
+                    image: AssetImage(businesses[3].getLogo()))),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: const Text(
                     'Highland coffee house is a small-business located near LSU that sells coffee and other stuff.',
-                    textAlign: TextAlign.center,
-                  )
-                ),
+                    textAlign: TextAlign.center)),
                 Container(
                   height: 42,
                   margin: const EdgeInsets.only(top: 20),
@@ -54,7 +50,7 @@ class _BusinessPageState extends State<BusinessPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    children: <Widget>[
                       pageDetails(0),
                       pageDetails(1),
                       pageDetails(2),
@@ -64,25 +60,14 @@ class _BusinessPageState extends State<BusinessPage> {
                         height: 30,
                         decoration: const BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(30)),
-                          color: Colors.grey
-                        ),
+                          color: Colors.grey),
                         child: const Center(
                           child: Text(
                             'Follow',
                             style: TextStyle(
                               color: Colors.white,
-                              fontWeight: FontWeight.bold
-                            )
-                          )
-                        )
-                      )
-                    ]
-                  ),
-                ),
-                const DealsComponent()
-              ]
-            )
-          ),
+                              fontWeight: FontWeight.bold))))])),
+                const DealsComponent()])),
           header(context, widget.showBackButton),
           BottomNavbar(
             onIconRightPressed: onPressed, 
@@ -110,10 +95,7 @@ class _BusinessPageState extends State<BusinessPage> {
 
 pageDetails(index) {
   List categories = ['Address', 'Menu', 'Reviews'];
-  bool istree = false;
-  if (index == 2) {
-    istree = true;
-  }
+  bool istree = (index == 2) ? true : false;
   return Column(
     children: <Widget>[
       Text(categories[index]),
@@ -124,13 +106,11 @@ pageDetails(index) {
 }
 
 businessDetails(index) {
-  if (index == 0) {
-    return const Icon(Icons.map);
+  switch (index) {
+    case 0: return const Icon(Icons.map);
+    case 1: return const Icon(Icons.menu_book);
   }
-  else if (index == 1) {
-    return const Icon(Icons.menu_book);
-  }
-  else {return const Text('2k');}
+  return const Text('2k');
 }
 
 header(BuildContext context, bool? isTrue) {
@@ -149,11 +129,7 @@ header(BuildContext context, bool? isTrue) {
               businesses[3].getName(),
               style: const TextStyle(
                 fontSize: 25, 
-                fontWeight: FontWeight.bold
-              )
-            )
-          ]
-        ),
+                fontWeight: FontWeight.bold))]),
         const Icon(Icons.more_vert)
       ]
     )

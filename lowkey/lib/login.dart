@@ -42,15 +42,10 @@ class _LoginState extends State<Login> {
               alignment: Alignment.topCenter,
               child: Image(
                 height: 150,
-                image: AssetImage('lib/assets/officiallogo.png')),
-            ),
+                image: AssetImage('lib/assets/officiallogo.png'))),
             Padding(
               padding: const EdgeInsets.only(top: 15, bottom: 40),
-              child: Text(
-                'LOWKEY',
-                style: loginLogo
-              )
-            ),
+              child: Text('LOWKEY', style: loginLogo)),
             Container(
               padding: const EdgeInsets.only(left: 50),
               alignment: Alignment.centerLeft,
@@ -58,10 +53,7 @@ class _LoginState extends State<Login> {
                 'Login to your Account', 
                 style: GoogleFonts.poppins(
                   fontSize: 17,
-                  fontWeight: FontWeight.w600
-                )
-              )
-            ),
+                  fontWeight: FontWeight.w600))),
             Container(
               height: 50,
               width: 300,
@@ -73,15 +65,10 @@ class _LoginState extends State<Login> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(5)),
-                      borderSide: BorderSide.none
-                    ),
+                      borderSide: BorderSide.none),
                     labelText: 'Email',
-                    hintText: 'tigers@lsu.edu',
-                  ),
-                  keyboardType: TextInputType.emailAddress,
-                )
-              )
-            ),
+                    hintText: 'tigers@lsu.edu'),
+                  keyboardType: TextInputType.emailAddress))),
             Container(
               height: 50,
               width: 300,
@@ -94,15 +81,10 @@ class _LoginState extends State<Login> {
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(5)), 
-                      borderSide: BorderSide.none
-                    ),
-                    labelText: 'Password',
-                  ),
+                      borderSide: BorderSide.none),
+                    labelText: 'Password'),
                   obscureText: true,
-                  keyboardType: TextInputType.emailAddress,
-                )
-              )
-            ),
+                  keyboardType: TextInputType.emailAddress))),
             GestureDetector(
               onTap: () => checkAccount(),
               child: Container(
@@ -111,8 +93,7 @@ class _LoginState extends State<Login> {
                 margin: const EdgeInsets.only(top: 50),
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(5)), 
-                  color: Colors.black,
-                ),
+                  color: Colors.black),
                 child: const Center(
                   child: Text(
                     'LOGIN',
@@ -120,12 +101,7 @@ class _LoginState extends State<Login> {
                       color: Colors.white,
                       letterSpacing: 2,
                       fontWeight: FontWeight.bold,
-                      fontSize: 20
-                    )
-                  )
-                )
-              )
-            ),
+                      fontSize: 20))))),
             GestureDetector(
               onTap: () => {Navigator.push(
                   context, 
@@ -136,24 +112,16 @@ class _LoginState extends State<Login> {
                 margin: const EdgeInsets.only(top: 20),
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(5)),
-                  border: Border.all() 
-                ),
+                  border: Border.all()),
                 child: const Center(
                   child: Text(
                     'SIGN UP',
                     style: TextStyle(
                       letterSpacing: 2,
                       fontWeight: FontWeight.bold,
-                      fontSize: 20
-                    )
-                  )
-                )
-              )
-            ),
+                      fontSize: 20))))),
             GestureDetector(
-              onTap:  () => {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const ForgotPassword()))
-              },
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const ForgotPassword())),
               child: Container(
                 padding: const EdgeInsets.only(top: 30, right: 50),
                 alignment: Alignment.topRight,

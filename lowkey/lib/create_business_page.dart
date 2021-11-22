@@ -46,8 +46,7 @@ class _CreateBusinessState extends State<CreateBusiness> {
                     style: TextStyle(
                       fontSize: 20,
                       fontFamily: 'helvetica',
-                      color: Colors.black,
-                    ))]),
+                      color: Colors.black))]),
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 20),
                 height: 100,
@@ -70,8 +69,7 @@ class _CreateBusinessState extends State<CreateBusiness> {
                       borderSide: BorderSide(width: 60)),
                     labelText: 'Name of Business'),
                   keyboardType: TextInputType.text,
-                  validator: (password) => (password == null || password.isEmpty) ? 'Text is empty' : null
-                )),
+                  validator: (password) => (password == null || password.isEmpty) ? 'Text is empty' : null)),
               Container(
                 height: 200,
                 width: 300,
@@ -85,27 +83,33 @@ class _CreateBusinessState extends State<CreateBusiness> {
                   maxLength: 150,
                   maxLines: null,
                   keyboardType: TextInputType.text,
-                  validator: (password) => (password == null || password.isEmpty) ? 'Text is empty' : null
-                )),
+                  validator: (password) => (password == null || password.isEmpty) ? 'Text is empty' : null)),
               InkWell(
                 onTap: () => onSubmit(context, _formKey),
                 child: Container(
                   margin: const EdgeInsets.only(top:20),
-                    height: 40,
-                    width: 205,
-                    decoration: BoxDecoration(
-                      color: _color[_index],
-                      borderRadius: const BorderRadius.all(Radius.circular(30))),
-                    child: const Center(
-                        child: Text(
-                          'Create',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-              ))))),
-            ]),
-        )));
+                  height: 40,
+                  width: 205,
+                  decoration: BoxDecoration(
+                    color: _color[_index],
+                    borderRadius: const BorderRadius.all(Radius.circular(30))),
+                  child: const Center(
+                    child: Text(
+                      'Create',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      )
+                    )
+                  )
+                )
+              ),
+            ]
+          ),
+        )
+      )
+    );
   }
 }
 
@@ -113,30 +117,29 @@ categories(int index) {
   List categories = <String>['Coffee', 'Bar', 'Food', 'Other'];
   List icons = <IconData>[Icons.coffee, Icons.celebration_outlined, Icons.local_restaurant, Icons.add_circle_sharp];
   return InkWell(
-      child: Container(
-          margin: EdgeInsets.only(right: 30, left: (index == 0) ? 30 : 0),
-          height: 80,
-          width: 95,
-          decoration: BoxDecoration(
-            color: _color[index],
-            borderRadius: const BorderRadius.all(Radius.circular(30)),
-          ),
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Icon(
-                  icons[index],
-                  size: 40,
-                  color: Colors.white,
-                ),
-                const SizedBox(height: 10),
-                Text(categories[index],
-                    style: const TextStyle(
-                      fontSize: 12,
-                      fontFamily: 'helvetica',
-                      color: Colors.white,
-                    ))
-              ])));
+    child: Container(
+      margin: EdgeInsets.only(right: 30, left: (index == 0) ? 30 : 0),
+      height: 80,
+      width: 95,
+      decoration: BoxDecoration(
+        color: _color[index],
+        borderRadius: const BorderRadius.all(Radius.circular(30))),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Icon(icons[index], size: 40, color: Colors.white),
+          const SizedBox(height: 10),
+          Text(categories[index],
+            style: const TextStyle(
+              fontSize: 12,
+              fontFamily: 'helvetica',
+              color: Colors.white,
+            )
+          )
+        ]
+      )
+    )
+  );
 }
 
 onSubmit(BuildContext context, GlobalKey<FormState> _formKey) {

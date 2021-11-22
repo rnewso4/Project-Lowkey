@@ -30,15 +30,10 @@ class _SignupState extends State<Signup> {
                 alignment: Alignment.topCenter,
                 child: Image(
                   height: 150,
-                  image: AssetImage('lib/assets/officiallogo.png')),
-              ),
+                  image: AssetImage('lib/assets/officiallogo.png'))),
               Padding(
                 padding: const EdgeInsets.only(top: 15, bottom: 40),
-                child: Text(
-                  'LOWKEY',
-                  style: loginLogo
-                )
-              ),
+                child: Text('LOWKEY', style: loginLogo)),
               Container(
                 padding: const EdgeInsets.only(left: 50),
                 alignment: Alignment.centerLeft,
@@ -46,10 +41,7 @@ class _SignupState extends State<Signup> {
                   'Make an Account', 
                   style: GoogleFonts.poppins(
                     fontSize: 17,
-                    fontWeight: FontWeight.w600
-                  )
-                )
-              ),
+                    fontWeight: FontWeight.w600))),
               Container(
                 height: 50,
                 width: 300,
@@ -61,15 +53,10 @@ class _SignupState extends State<Signup> {
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(5)),
-                        borderSide: BorderSide.none
-                      ),
-                      labelText: 'Name',
-                    ),
+                        borderSide: BorderSide.none),
+                      labelText: 'Name'),
                     keyboardType: TextInputType.name,
-                    validator: (name) => (name == null || name.isEmpty) ? 'Text is empty' : null
-                  )
-                )
-              ),
+                    validator: (name) => (name == null || name.isEmpty) ? 'Text is empty' : null))),
               Container(
                 height: 50,
                 width: 300,
@@ -80,17 +67,12 @@ class _SignupState extends State<Signup> {
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(5)),
-                        borderSide: BorderSide.none
-                      ),
-                      labelText: 'Email',
-                    ),
+                        borderSide: BorderSide.none),
+                      labelText: 'Email'),
                     keyboardType: TextInputType.emailAddress,
                     validator: (email) => !EmailValidator.validate(email!)
                     ? 'Not a valid email.'
-                    : null,
-                  )
-                )
-              ),
+                    : null))),
               Container(
                 height: 50,
                 width: 300,
@@ -102,23 +84,19 @@ class _SignupState extends State<Signup> {
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(5)), 
-                        borderSide: BorderSide.none
-                      ),
-                      labelText: 'Password',
-                    ),
+                        borderSide: BorderSide.none),
+                      labelText: 'Password'),
                     obscureText: true,
                     keyboardType: TextInputType.emailAddress,
                     validator: (password) => (password == null || password.isEmpty) ? 'Text is empty' : null
-                  )
-                )
-              ),
+                  ))),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Checkbox(value: isChecked, onChanged: (bool? value) {
                     setState(() { isChecked = value!;});}),
                   const Text('Check for manager account')
-                ],
+                ]
               ),
               GestureDetector(
                 onTap: () => nextPage(context, isChecked, _formKey),

@@ -45,19 +45,14 @@ class _HomepageListState extends State<HomepageList> {
               children: <Widget>[
                 Text('Recent Deals', style: (_pageNum == 0) ? dealsAndNewsStyle() : const TextStyle(color: Colors.grey)),
                 const SizedBox(width: 40),
-                Text('Top News', style: (_pageNum == 1) ? dealsAndNewsStyle() : const TextStyle(color: Colors.grey))
-              ]
-            )
-          ),
+                Text('Top News', style: (_pageNum == 1) ? dealsAndNewsStyle() : const TextStyle(color: Colors.grey))])),
           Expanded(
             child: PageView.builder(
               controller: controller,
               scrollDirection: Axis.horizontal,
               itemCount: pages.length,
               itemBuilder: (context, index) => pages[index],
-              onPageChanged: pageChanged,
-            )
-          ),
+              onPageChanged: pageChanged)),
           BottomNavbar(
             onMenuPressed: () => _scaffoldState.currentState?.openDrawer(),
             iconLeft: Icons.tune, 
@@ -70,9 +65,9 @@ class _HomepageListState extends State<HomepageList> {
   }
 }
 
-dealsAndNewsStyle() => const TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black);
+TextStyle dealsAndNewsStyle() => const TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black);
 
-tilesForDeals(String name, String logo, String description, context) {
+ListTile tilesForDeals(String name, String logo, String description, context) {
   return ListTile(
     leading: Image(image: AssetImage(logo), width: 70,),
     title: Text(name),
@@ -84,7 +79,7 @@ tilesForDeals(String name, String logo, String description, context) {
   );
 }
 
-tilesForNews(String name, String logo, String description) {
+ListTile tilesForNews(String name, String logo, String description) {
   return ListTile(
     leading: Image(image: AssetImage(logo), width: 70,),
     title: Text(name),
@@ -93,7 +88,7 @@ tilesForNews(String name, String logo, String description) {
   );
 }
 
-dealsView() {
+Widget dealsView() {
   return ListView.separated(
     shrinkWrap: true,
     padding: const EdgeInsets.all(8),
@@ -103,7 +98,7 @@ dealsView() {
   );
 }
 
-newsView() {
+Widget newsView() {
   return ListView.separated(
     shrinkWrap: true,
     padding: const EdgeInsets.all(8),

@@ -31,28 +31,19 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             margin: const EdgeInsets.only(top: 40, left: 5),
             child: IconButton(
               onPressed: () => Navigator.pop(context),
-              icon: const Icon(Icons.arrow_back_ios)
-            ),
-          ),
+              icon: const Icon(Icons.arrow_back_ios))),
           Container(
             margin: const EdgeInsets.only(top: 10, left: 20),
             child: Text(
               'Forgot Password',
               style: GoogleFonts.poppins(
                 fontWeight: FontWeight.bold,
-                fontSize: 32
-              )
-            )
-          ),
+                fontSize: 32))),
           Container(
             margin: const EdgeInsets.only(top: 80, left: 20),
             child: Text(
               'Please, enter your email address. You will receive a link to create a new password via email.',
-              style: GoogleFonts.poppins(
-                fontSize: 14
-              )
-            ),
-          ),
+              style: GoogleFonts.poppins(fontSize: 14))),
           Align(
             alignment: Alignment.topCenter,
             child: Container(
@@ -71,41 +62,33 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(5)),
-                        borderSide: BorderSide.none
-                      ),
-                      labelText: 'Email'
-                    ),
-                    keyboardType: TextInputType.emailAddress,
-                  ),
-                )
-              )
-            )
-          ),
+                        borderSide: BorderSide.none),
+                      labelText: 'Email'),
+                    keyboardType: TextInputType.emailAddress))))),
           Align(
             alignment: Alignment.topCenter,
             child: GestureDetector(
-                onTap: () => _submitCommand(),
-                child: Container(
-                  height: 50,
-                  width: 300,
-                  margin: const EdgeInsets.only(top: 100),
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(30)), 
-                    color: Colors.black,
-                  ),
-                  child: const Center(
-                    child: Text(
-                      'SEND',
-                      style: TextStyle(
-                        color: Colors.white,
-                        letterSpacing: 2,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20
-                      )
+              onTap: () => _submitCommand(),
+              child: Container(
+                height: 50,
+                width: 300,
+                margin: const EdgeInsets.only(top: 100),
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(30)), 
+                  color: Colors.black),
+                child: const Center(
+                  child: Text(
+                    'SEND',
+                    style: TextStyle(
+                      color: Colors.white,
+                      letterSpacing: 2,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20
                     )
                   )
                 )
-              ),
+              )
+            ),
           ),
         ],
       ),
@@ -118,11 +101,8 @@ showNotification () {
     const Text("Email Notification Sent!"),
     background: const Color(0xffE6E6E6),
     trailing: Builder(builder: (context) {
-      return TextButton(
-          onPressed: () {
-            OverlaySupportEntry.of(context)?.dismiss();
-          },
-          child: const Text('Dismiss', style: TextStyle(color: Colors.black)));
+      return TextButton( onPressed: () => OverlaySupportEntry.of(context)?.dismiss(),
+      child: const Text('Dismiss', style: TextStyle(color: Colors.black)));
     }),
   );
 }
