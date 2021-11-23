@@ -18,6 +18,7 @@ void main() async {
   runApp(const MyApp());
 
   //Below is used to test Deals Order List. (Finished)
+  /*
   Utilities tools = Utilities();
   List<Customer> testAccount = tools.getCurrentRegisterCustomerAccounts();
   List<Business> testBusiness = tools.generateDemoBusiness();
@@ -28,7 +29,7 @@ void main() async {
     testBusiness[0]
         .addDeals(Deals("Outdated Deals", "", "2021-10-01", "2021-10-21"));
     tools.generateDealsOrder(currentCustomer, testBusiness);
-  }
+  } */
 }
 
 class MyApp extends StatelessWidget {
