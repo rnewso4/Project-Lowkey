@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:lowkey/UI/create_new.dart';
-import 'package:lowkey/components/utilities.dart';
+//import 'package:lowkey/UI/create_new.dart';
+//import 'package:lowkey/components/utilities.dart';
 import 'package:lowkey/login.dart';
-import 'package:lowkey/manager_page.dart';
+//import 'package:lowkey/manager_page.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:firebase_core/firebase_core.dart';
 //import 'package:lowkey/UI/login.dart';
 //import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'components/business.dart';
-import 'components/bussiness_category.dart';
-import 'components/customer.dart';
-import 'components/deals.dart';
+//import 'components/business.dart';
+//import 'components/bussiness_category.dart';
+//import 'components/customer.dart';
+//import 'components/deals.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

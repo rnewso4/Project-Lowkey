@@ -7,7 +7,7 @@ import 'package:lowkey/components/news.dart';
 import 'package:lowkey/components/bussiness_category.dart';
 
 class Utilities {
-  Utilities() {}
+  Utilities();
 
   bool checkCustomerLogin(String email, String password) {
     List<Customer> availableCustomerAccounts =
@@ -179,12 +179,12 @@ class Utilities {
         .sort((a, b) => a.getStartDate().compareTo(b.getStartDate()));
 
     retVal = dealsFromFavoriteBusiness + dealsFromRemainingBusiness;
-
+    /* Printing out all the Deals (in order)
     for (int i = 0; i < retVal.length; i++) {
       print(retVal[i].getName() +
           " Start date: " +
           retVal[i].getStartDate().toString());
-    }
+    } */
     return retVal;
   }
 

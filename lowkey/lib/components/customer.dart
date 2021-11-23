@@ -7,7 +7,7 @@ class Customer extends Account {
   List<Business> _listOfFavoriteBussinesses = [];
 
   Customer(String email, String password)
-      : super(email, password, Priority.customer) {}
+      : super(email, password, Priority.customer);
 
   void addFavoriteBusiness(Business favoriteBus) {
     _listOfFavoriteBussinesses.add(favoriteBus);

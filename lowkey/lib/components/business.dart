@@ -55,7 +55,6 @@ class Business {
     DateTime currentDate = DateTime.now();
     for (int i = _dealIndex - 1; i >= 0; i--) {
       if (_listOfDeals[i].getEndDate().isBefore(currentDate)) {
-        print(_listOfDeals[i].getName() + " is outdated and is now archived!");
         Deals outdatedDeal = _listOfDeals.removeAt(i);
         _dealIndex--;
 
@@ -89,6 +88,10 @@ class Business {
 
   void changeLogo(String logoPath) {
     _logo = logoPath;
+  }
+
+  BussinessCategory getBussinessCategory() {
+    return _styleOfBussiness;
   }
 
   void getDistance() {}

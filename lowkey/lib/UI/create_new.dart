@@ -4,7 +4,7 @@ import 'package:lowkey/UI/homepage_list.dart';
 import 'package:lowkey/flutter_fire.dart';
 import '../flutter_fire.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:lowkey/components/deals.dart';
+//import 'package:lowkey/components/deals.dart';
 
 class CreateNew extends StatefulWidget {
   const CreateNew({Key? key}) : super(key: key);
