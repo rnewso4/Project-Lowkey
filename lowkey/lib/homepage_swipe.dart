@@ -278,23 +278,25 @@ Widget newsView() {
 
 List<Business> businesses = <Business>[
   Business('The Revelry', '\$5 off every coffee purchased before noon',
-      'lib/assets/rev.jpg'),
+      'lib/UI/assets/rev.jpg'),
   Business('The Revelry', 'Our pumpkin spice pizza is back at high demand',
-      'lib/assets/rev.jpg'),
+      'lib/UI/assets/rev.jpg'),
   Business('The Revelry', 'Students get in free before midnight',
-      'lib/assets/rev.jpg'),
+      'lib/UI/assets/rev.jpg'),
   Business('Highland Coffee', '\$5 off every coffee purchased before noon',
-      'lib/assets/highland.png'),
+      'lib/UI/assets/highland.png'),
   Business('Highland Cofee', 'Our pumpkin spice latte is back at high demand',
-      'lib/assets/highland.png'),
+      'lib/UI/assets/highland.png'),
   Business('Highland Coffee', 'Doja Cat will be performing live on Saturday',
-      'lib/assets/highland.png'),
+      'lib/UI/assets/highland.png'),
   Business('Reginelli’s Pizzeria', '\$5 off every coffee purchased before noon',
-      'lib/assets/reg.jpeg'),
+      'lib/UI/assets/reg.jpeg'),
+  Business(
+      'Reginelli’s Pizzeria',
+      'Our pumpkin spice pizza is back at high demand',
+      'lib/UI/assets/reg.jpeg'),
   Business('Reginelli’s Pizzeria',
-      'Our pumpkin spice pizza is back at high demand', 'lib/assets/reg.jpeg'),
-  Business('Reginelli’s Pizzeria',
-      'Buy two, get a third one free every weekend', 'lib/assets/reg.jpeg'),
+      'Buy two, get a third one free every weekend', 'lib/UI/assets/reg.jpeg'),
 ];
 
 dealsAndNewsStyle() => const TextStyle(

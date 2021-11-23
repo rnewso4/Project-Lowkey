@@ -26,7 +26,7 @@ class _LoginState extends State<Login> {
                 alignment: Alignment.topCenter,
                 child: Image(
                     height: 150,
-                    image: AssetImage('lib/assets/officiallogo.png')),
+                    image: AssetImage('lib/UI/assets/officiallogo.png')),
               ),
               Padding(
                   padding: const EdgeInsets.only(top: 15, bottom: 40),

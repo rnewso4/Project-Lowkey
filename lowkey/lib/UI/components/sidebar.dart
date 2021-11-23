@@ -26,7 +26,8 @@ class Sidebar extends StatelessWidget {
                       children: [
                         const Image(
                             height: 50,
-                            image: AssetImage('lib/assets/officiallogo2.png')),
+                            image:
+                                AssetImage('lib/UI/assets/officiallogo2.png')),
                         const SizedBox(width: 8),
                         Text('LOWKEY', style: sidebarLogo),
                       ],
