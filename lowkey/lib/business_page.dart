@@ -7,7 +7,8 @@ import 'components/sidebar.dart';
 
 class BusinessPage extends StatefulWidget {
   final bool? showBackButton;
-  const BusinessPage({Key? key, this.showBackButton}) : super(key: key);
+  final bool? isOwner;
+  const BusinessPage({Key? key, this.showBackButton, this.isOwner}) : super(key: key);
   @override
   _BusinessPageState createState() => _BusinessPageState();
 }
@@ -70,8 +71,7 @@ class _BusinessPageState extends State<BusinessPage> {
                 const DealsComponent()])),
           header(context, widget.showBackButton),
           BottomNavbar(
-            onIconRightPressed: onPressed, 
-            iconLeft: Icons.add, 
+            iconRight: (widget.isOwner == true) ? Icons.edit : null,
             backgroundColor: Colors.white,
             onMenuPressed: () => _scaffoldState.currentState?.openDrawer()
           )

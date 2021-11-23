@@ -26,14 +26,20 @@ class _SignupState extends State<Signup> {
           key: _formKey,
           child: Column(
             children: <Widget>[
-              const Align(
+              /*const Align(
                 alignment: Alignment.topCenter,
                 child: Image(
                   height: 150,
                   image: AssetImage('lib/assets/officiallogo.png'))),
               Padding(
                 padding: const EdgeInsets.only(top: 15, bottom: 40),
-                child: Text('LOWKEY', style: loginLogo)),
+                child: Text('LOWKEY', style: loginLogo)),*/
+              Container(
+                child: IconButton(
+                  onPressed: () => Navigator.pop(context),
+                  icon: const Icon(Icons.arrow_back_ios)),
+              ),
+              const SizedBox(height: 205),
               Container(
                 padding: const EdgeInsets.only(left: 50),
                 alignment: Alignment.centerLeft,

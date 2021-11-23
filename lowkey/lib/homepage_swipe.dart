@@ -164,9 +164,10 @@ swippablePages(textbuttonClicked, BuildContext context, GlobalKey<ScaffoldState>
                   _isDealsView ? dealsView() : newsView(),
                   BottomNavbar(
                     onMenuPressed: () => _scaffoldState.currentState?.openDrawer(),
-                    iconLeft: Icons.tune,
+                    //iconLeft: Icons.tune,
                     backgroundColor: Colors.transparent,
-                    onIconRightPressed: () {})]),
+                    //onIconRightPressed: () {}
+                    )]),
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(

@@ -77,7 +77,7 @@ Widget tiles(BuildContext context, int index) {
     icons.insert(0, Icons.dashboard);
     icons.insert(1, Icons.business);
     onClick.insert(0, const AnalyticsPage());
-    onClick.insert(1, const BusinessPage());
+    onClick.insert(1, const BusinessPage(isOwner: true));
   }
 
   return GestureDetector(

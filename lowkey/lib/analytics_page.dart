@@ -114,9 +114,9 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
         Expanded(
           child: BottomNavbar(
             onMenuPressed: () => _scaffoldState.currentState?.openDrawer(),
-            iconLeft: Icons.tune, 
+            //iconLeft: Icons.tune, 
             backgroundColor: Colors.white,
-            onIconRightPressed: () {}
+            //onIconRightPressed: () {}
           )
         )
       ])

@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 class BottomNavbar extends StatelessWidget {
 
   final Function onMenuPressed;
-  final IconData iconLeft;
+  final IconData? iconRight;
   final Color backgroundColor;
-  final Function onIconRightPressed;
+  final Function? onIconRightPressed;
 
   const BottomNavbar({ 
     Key? key, required this.onMenuPressed, 
-    required this.iconLeft, 
+    this.iconRight, 
     required this.backgroundColor,
-    required this.onIconRightPressed
+    this.onIconRightPressed
   }) : super(key: key);
 
   @override
@@ -29,9 +29,10 @@ class BottomNavbar extends StatelessWidget {
             GestureDetector(
               onTap: () => onMenuPressed(),
               child: const Icon(Icons.menu, size: 40, color: Colors.black)),
-            GestureDetector(
-              onTap: () => onIconRightPressed(),
-              child: Icon(iconLeft, size: 40, color: Colors.black))
+            if (iconRight != null) GestureDetector(
+              onTap: (onIconRightPressed != null) ? () => onIconRightPressed!() : () {},
+              child: Icon(iconRight, size: 40, color: Colors.black)
+            )
           ]
         )
       )

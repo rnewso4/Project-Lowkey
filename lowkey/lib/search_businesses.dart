@@ -30,9 +30,10 @@ class _BusinessSearchState extends State<BusinessSearch> {
         children: <Widget>[
         BottomNavbar(
           onMenuPressed: () => _scaffoldState.currentState?.openDrawer(),
-          iconLeft: Icons.tune,
+          //iconLeft: Icons.tune,
           backgroundColor: Colors.white,
-          onIconRightPressed: () {})
+          //onIconRightPressed: () {}
+          )
         ]
       ),
     );

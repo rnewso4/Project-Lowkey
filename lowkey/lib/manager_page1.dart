@@ -69,8 +69,8 @@ class _ManagerPage1State extends State<ManagerPage1> {
           ),
           header(context, widget.showBackButton),
           BottomNavbar(
-            onIconRightPressed: onPressed, 
-            iconLeft: Icons.add, 
+            //onIconRightPressed: onPressed, 
+            //iconLeft: Icons.add, 
             backgroundColor: Colors.white,
             onMenuPressed: () => _scaffoldState.currentState?.openDrawer()
           )

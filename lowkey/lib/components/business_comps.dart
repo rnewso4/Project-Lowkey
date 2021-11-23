@@ -3,8 +3,6 @@ import 'package:lowkey/deals_page.dart';
 
 import 'app_icons.dart';
 
-bool isEmpty = true;
-
 class DealsComponent extends StatelessWidget {
   const DealsComponent({ Key? key }) : super(key: key);
 
@@ -26,7 +24,7 @@ class DealsComponent extends StatelessWidget {
             margin: const EdgeInsets.only(top: 20, bottom: 30),
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: !isEmpty ? 7 : 1,
+              itemCount: 7,
               itemBuilder: (context, index) => dealsCard(context))),
           const Align(
             alignment: Alignment.topLeft,
@@ -35,19 +33,18 @@ class DealsComponent extends StatelessWidget {
               style: TextStyle(
                 fontSize: 25,
                 letterSpacing: 2.0))),
-          !isEmpty ? Container(
+          Container(
             height: 140,
             margin: const EdgeInsets.only(top: 20, bottom: 27),
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 7,
-              itemBuilder: (context, index) => newsCard())) 
-           : const SizedBox(height: 40),
+              itemBuilder: (context, index) => newsCard())) ,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text('Reviews', style: categoryTextStyle()),
-              if (!isEmpty) Row(
+              Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: const <Widget>[
                   Text('4.3', style: TextStyle(
@@ -58,7 +55,7 @@ class DealsComponent extends StatelessWidget {
                     child: Text(' out of 5', style: TextStyle(
                       color: Colors.grey)))
                 ])]),
-          if (!isEmpty) ListView.builder(
+          ListView.builder(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount: 3,

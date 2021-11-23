@@ -55,9 +55,9 @@ class _HomepageListState extends State<HomepageList> {
               onPageChanged: pageChanged)),
           BottomNavbar(
             onMenuPressed: () => _scaffoldState.currentState?.openDrawer(),
-            iconLeft: Icons.tune, 
+            //iconLeft: Icons.tune, 
             backgroundColor: Colors.white,
-            onIconRightPressed: () {},
+            //onIconRightPressed: () {},
           )
         ]
       )
