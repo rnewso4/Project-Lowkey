@@ -6,6 +6,7 @@ import 'package:lowkey/forgot_password.dart';
 import 'package:lowkey/signup_page.dart';
 import 'components/page_transition.dart';
 import 'homepage_list.dart';
+import 'components/global.dart';
 
 class Login extends StatefulWidget {
   const Login ({Key? key}) : super(key: key);
@@ -25,9 +26,14 @@ class _LoginState extends State<Login> {
   }
 
   void checkAccount() {
-    myController.text == 'lowkey' 
-    ? Navigator.push( context, SlideRightRoute(page: const AnalyticsPage()))
-    : Navigator.push( context, SlideRightRoute(page: const HomepageList()));
+    if (myController.text == 'lowkey') {
+      Navigator.push( context, SlideRightRoute(page: const AnalyticsPage()));
+      isManager = true;
+    }
+    else {
+      Navigator.push( context, SlideRightRoute(page: const HomepageList()));
+      isManager = false;
+      }
   }
 
   @override

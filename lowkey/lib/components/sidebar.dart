@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lowkey/analytics_page.dart';
+import 'package:lowkey/business_page.dart';
 import 'package:lowkey/components/logo_style.dart';
 import 'package:lowkey/homepage_list.dart';
 import 'package:lowkey/homepage_swipe.dart';
@@ -33,12 +35,12 @@ class Sidebar extends StatelessWidget {
                   child: ListView.builder(
                     physics: const NeverScrollableScrollPhysics(),
                     padding: const EdgeInsets.only(top: 0),
-                    itemCount: 4,
+                    itemCount: global.isManager ? 5 : 3,
                     itemBuilder: (context, index) => tiles(context, index)))]),
             Container(
               margin: const EdgeInsets.only(bottom: 20),
               alignment: Alignment.bottomCenter,
-              child: tiles(context, 4)
+              child: tiles(context, global.isManager ? 5 : 3)
             )
           ],
         ),
@@ -51,24 +53,33 @@ Widget tiles(BuildContext context, int index) {
   List<String> categories = [
     'List View',
     'Swipe View',
-    'Business Pages',
     'Search',
     'Logout'
   ];
+
   List<IconData> icons = [
     Icons.list,
     Icons.swipe,
-    Icons.business,
     Icons.search,
     Icons.logout
   ];
+
   List<Widget> onClick = [
     const HomepageList(),
     const HomepageSwipe(),
     const BusinessSearch(),
-    const BusinessSearch(),
     const Login()
   ];
+
+  if (global.isManager) {
+    categories.insert(0, 'Dashboard');
+    categories.insert(1, 'Your Page');
+    icons.insert(0, Icons.dashboard);
+    icons.insert(1, Icons.business);
+    onClick.insert(0, const AnalyticsPage());
+    onClick.insert(1, const BusinessPage());
+  }
+
   return GestureDetector(
     onTap: () {
       Navigator.push(context, SlideRightRoute(page: onClick[index]));

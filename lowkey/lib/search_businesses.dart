@@ -82,8 +82,7 @@ class SearchBusiness extends SearchDelegate<String> {
 
   @override
   Widget buildResults(BuildContext context) {
-    //throw UnimplementedError();
-    return Text('results');
+    throw UnimplementedError();
   }
 
   @override

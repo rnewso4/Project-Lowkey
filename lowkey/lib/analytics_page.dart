@@ -129,16 +129,16 @@ Widget categories(int index) {
     child: Container(
       margin: EdgeInsets.only(right: 30, left: (index == 0) ? 10 : 0),
       width: 95,
-      decoration: const BoxDecoration(
-        color: Colors.black,
-        borderRadius: BorderRadius.all(Radius.circular(30))),
+      decoration: BoxDecoration(
+        color: (_index == index) ? const Color(0xff1C2139) : Colors.transparent,
+        borderRadius: const BorderRadius.all(Radius.circular(30))),
       child: Center(
         child: Text(
           graphTitles[index],
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 12,
             fontFamily: 'helvetica',
-            color: Colors.white,
+            color: (_index == index) ? Colors.white : Colors.black,
             fontWeight: FontWeight.bold
           )
         )
