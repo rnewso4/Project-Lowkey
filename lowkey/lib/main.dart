@@ -25,6 +25,8 @@ void main() async {
 
   if (testAccount[0].getPriority() == Priority.customer) {
     Customer currentCustomer = testAccount[0];
+    testBusiness[0]
+        .addDeals(Deals("Outdated Deals", "", "2021-10-01", "2021-10-21"));
     tools.generateDealsOrder(currentCustomer, testBusiness);
   }
 }

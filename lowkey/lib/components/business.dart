@@ -39,6 +39,7 @@ class Business {
   }
 
   Deals getDeal(int index) {
+    _archiveOutdatedDeals();
     return _listOfDeals[index];
   }
 
@@ -46,11 +47,30 @@ class Business {
     newDeal.setBussinessName(_name);
     _dealIndex++;
     _listOfDeals.add(newDeal);
+    _archiveOutdatedDeals();
     _listOfDeals.sort((a, b) => a.getStartDate().compareTo(b.getStartDate()));
+  }
+
+  void _archiveOutdatedDeals() {
+    DateTime currentDate = DateTime.now();
+    for (int i = _dealIndex - 1; i >= 0; i--) {
+      if (_listOfDeals[i].getEndDate().isBefore(currentDate)) {
+        print(_listOfDeals[i].getName() + " is outdated and is now archived!");
+        Deals outdatedDeal = _listOfDeals.removeAt(i);
+        _dealIndex--;
+
+        _archivedDeals.add(outdatedDeal);
+        _archivedDeals.sort((a, b) => a.getEndDate().compareTo(b.getEndDate()));
+      }
+    }
   }
 
   int getDealIndex() {
     return _dealIndex;
+  }
+
+  Deals _getArchivedDeal(int index) {
+    return _archivedDeals[index];
   }
 
   News getNews(int index) {
