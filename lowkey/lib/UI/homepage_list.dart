@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'deals_page.dart';
 import 'components/businesses.dart';
 import 'homepage_swipe.dart';
-import 'components/bottom_navbar.dart';
+import 'package:lowkey/UI/components/bottom_navbar.dart';
 import 'components/sidebar.dart';
 
 final PageController controller = PageController(initialPage: 0);

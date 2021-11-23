@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lowkey/analytics_page.dart';
-import 'package:lowkey/components/logo_style.dart';
-import 'package:lowkey/forgot_password.dart';
-import 'package:lowkey/signup_page.dart';
-import 'components/page_transition.dart';
-import 'homepage_list.dart';
-import 'components/global.dart';
+import 'package:lowkey/UI/analytics_page.dart';
+import 'package:lowkey/UI/components/logo_style.dart';
+import 'package:lowkey/UI/forgot_password.dart';
+import 'package:lowkey/UI/signup_page.dart';
+import '../UI/components/page_transition.dart';
+import '../UI/homepage_list.dart';
+import '../UI/components/global.dart';
 
 class Login extends StatefulWidget {
   const Login ({Key? key}) : super(key: key);

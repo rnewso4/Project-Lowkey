@@ -2,8 +2,8 @@ import 'dart:ui';
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'components/bottom_navbar.dart';
-import 'components/sidebar.dart';
+import '../UI/components/bottom_navbar.dart';
+import '../UI/components/sidebar.dart';
 
   List<Color> gradientColors = [
     const Color(0xff8A15FF),

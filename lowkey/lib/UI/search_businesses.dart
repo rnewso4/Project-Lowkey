@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lowkey/components/bottom_navbar.dart';
-import 'package:lowkey/components/sidebar.dart';
+import 'package:lowkey/UI/components/bottom_navbar.dart';
+import 'package:lowkey/UI/components/sidebar.dart';
 import 'business_page.dart';
 
 class BusinessSearch extends StatefulWidget {

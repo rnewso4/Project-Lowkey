@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lowkey/deals_page.dart';
+import 'package:lowkey/UI/deals_page.dart';
 
 import 'app_icons.dart';
 

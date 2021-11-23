@@ -1,10 +1,10 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lowkey/components/logo_style.dart';
-import 'package:lowkey/create_business_page.dart';
-import 'components/page_transition.dart';
-import 'homepage_list.dart';
+import 'package:lowkey/UI/components/logo_style.dart';
+import 'package:lowkey/UI/create_business_page.dart';
+import '../UI/components/page_transition.dart';
+import '../UI/homepage_list.dart';
 
 class Signup extends StatefulWidget {
   const Signup ({Key? key}) : super(key: key);
@@ -21,25 +21,26 @@ class _SignupState extends State<Signup> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.only(top: 100),
+        padding: const EdgeInsets.only(top: 50),
         child: Form(
           key: _formKey,
           child: Column(
             children: <Widget>[
-              /*const Align(
+              Container(
+                alignment: Alignment.topLeft,
+                child: IconButton(
+                  onPressed: () => Navigator.pop(context),
+                  icon: const Icon(Icons.arrow_back_ios)),
+              ),
+              const Align(
                 alignment: Alignment.topCenter,
                 child: Image(
                   height: 150,
                   image: AssetImage('lib/assets/officiallogo.png'))),
               Padding(
                 padding: const EdgeInsets.only(top: 15, bottom: 40),
-                child: Text('LOWKEY', style: loginLogo)),*/
-              Container(
-                child: IconButton(
-                  onPressed: () => Navigator.pop(context),
-                  icon: const Icon(Icons.arrow_back_ios)),
-              ),
-              const SizedBox(height: 205),
+                child: Text('LOWKEY', style: loginLogo)),
+              //const SizedBox(height: 205),
               Container(
                 padding: const EdgeInsets.only(left: 50),
                 alignment: Alignment.centerLeft,

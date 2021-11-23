@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
-import 'components/businesses.dart';
+import '../UI/components/businesses.dart';
 import 'create_new.dart';
-import 'components/business_comps.dart';
-import 'components/bottom_navbar.dart';
-import 'components/sidebar.dart';
+import '../UI/components/business_comps.dart';
+import '../UI/components/bottom_navbar.dart';
+import '../UI/components/sidebar.dart';
 
-bool isEmpty = true;
-
-class ManagerPage1 extends StatefulWidget {
+class BusinessPage extends StatefulWidget {
   final bool? showBackButton;
-  const ManagerPage1({Key? key, this.showBackButton}) : super(key: key);
+  final bool? isOwner;
+  const BusinessPage({Key? key, this.showBackButton, this.isOwner}) : super(key: key);
   @override
-  _ManagerPage1State createState() => _ManagerPage1State();
+  _BusinessPageState createState() => _BusinessPageState();
 }
 
-class _ManagerPage1State extends State<ManagerPage1> {
+class _BusinessPageState extends State<BusinessPage> {
   void onPressed() {
     Navigator.push(
       context, 
@@ -33,22 +32,18 @@ class _ManagerPage1State extends State<ManagerPage1> {
           Container(
             margin: const EdgeInsets.only(top:50),
             child: ListView(
-              children: [
-                !isEmpty ? Container(
+              children: <Widget>[
+                Container(
                   margin: const EdgeInsets.symmetric(horizontal: 120),
                   padding: const EdgeInsets.symmetric(vertical: 30),
                   child: Image(
                     width: 150,
-                    image: AssetImage(businesses[3].getLogo())
-                  )
-                ) : const SizedBox(height: 150),
+                    image: AssetImage(businesses[3].getLogo()))),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: const Text(
                     'Highland coffee house is a small-business located near LSU that sells coffee and other stuff.',
-                    textAlign: TextAlign.center,
-                  )
-                ),
+                    textAlign: TextAlign.center)),
                 Container(
                   height: 42,
                   margin: const EdgeInsets.only(top: 20),
@@ -56,21 +51,27 @@ class _ManagerPage1State extends State<ManagerPage1> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    children: <Widget>[
                       pageDetails(0),
                       pageDetails(1),
                       pageDetails(2),
-                    ]
-                  ),
-                ),
-                const DealsComponent()
-              ]
-            )
-          ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 5),
+                        width: 70,
+                        height: 30,
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(30)),
+                          color: Colors.grey),
+                        child: const Center(
+                          child: Text(
+                            'Follow',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold))))])),
+                const DealsComponent()])),
           header(context, widget.showBackButton),
           BottomNavbar(
-            //onIconRightPressed: onPressed, 
-            //iconLeft: Icons.add, 
+            iconRight: (widget.isOwner == true) ? Icons.edit : null,
             backgroundColor: Colors.white,
             onMenuPressed: () => _scaffoldState.currentState?.openDrawer()
           )
@@ -94,27 +95,22 @@ class _ManagerPage1State extends State<ManagerPage1> {
 
 pageDetails(index) {
   List categories = ['Address', 'Menu', 'Reviews'];
-  bool istree = false;
-  if (index == 2) {
-    istree = true;
-  }
+  bool istree = (index == 2) ? true : false;
   return Column(
     children: <Widget>[
       Text(categories[index]),
       istree ? const SizedBox(height: 5) : const SizedBox(),
-      if (!isEmpty) businessDetails(index)
+      businessDetails(index)
     ]
   );
 }
 
 businessDetails(index) {
-  if (index == 0) {
-    return const Icon(Icons.map);
+  switch (index) {
+    case 0: return const Icon(Icons.map);
+    case 1: return const Icon(Icons.menu_book);
   }
-  else if (index == 1) {
-    return const Icon(Icons.menu_book);
-  }
-  else {return const Text('2k');}
+  return const Text('2k');
 }
 
 header(BuildContext context, bool? isTrue) {
@@ -133,11 +129,7 @@ header(BuildContext context, bool? isTrue) {
               businesses[3].getName(),
               style: const TextStyle(
                 fontSize: 25, 
-                fontWeight: FontWeight.bold
-              )
-            )
-          ]
-        ),
+                fontWeight: FontWeight.bold))]),
         const Icon(Icons.more_vert)
       ]
     )

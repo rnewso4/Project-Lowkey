@@ -1,14 +1,14 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:lowkey/components/sidebar.dart';
-import 'components/app_icons.dart';
-import 'components/businesses.dart';
+import 'package:lowkey/UI/components/sidebar.dart';
+import '../UI/components/app_icons.dart';
+import '../UI/components/businesses.dart';
 import 'business_page.dart';
-import 'components/bottom_navbar.dart';
+import '../UI/components/bottom_navbar.dart';
 
 // Reason why a global variable is used here is because when sidebar navigates to a new page,
 //the index needs to be set back to 0 else app breaks
-import 'components/global.dart' as global;
+import '../UI/components/global.dart' as global;
 
 final PageController controller = PageController(initialPage: 0);
 
