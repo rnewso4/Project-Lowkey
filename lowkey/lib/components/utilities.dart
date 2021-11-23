@@ -36,13 +36,14 @@ class Utilities {
   }
 
   List<Business> generateDemoBusiness() {
-    Manager admin = Manager("admin@lsu.edu", "123abc", "(225)123-4567", "2021");
+    List<Manager> managerAccounts = getCurrentRegisterManagerAccounts();
+
     List<Business> retVal = [];
     retVal.add(Business(
         "Coffee Club",
         "At Coffee Club we served a variety of different types of coffee and deserts.",
         BussinessCategory.coffee,
-        admin));
+        managerAccounts[0]));
 
     retVal[0].addDeals(Deals(
         "Half off Cappuccino!",
@@ -80,7 +81,7 @@ class Utilities {
         "Pizza Plaza",
         "At Pizza Plaza have a build your on style pizza place, where our workers will prepare your pizza in front of you.",
         BussinessCategory.food,
-        admin));
+        managerAccounts[0]));
 
     retVal[1].addDeals(Deals(
         "15% on Meat Lovers Supreme!",
@@ -109,7 +110,7 @@ class Utilities {
         "The Bar",
         "wheather you just want to meet new people or hang out with your friends, The Bar is the best place to be!",
         BussinessCategory.bar,
-        admin));
+        managerAccounts[0]));
 
     retVal[2].addDeals(Deals(
         "Two shots for the price of one!",

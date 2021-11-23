@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:lowkey/components/logo_style.dart';
+import 'package:lowkey/UI/components/logo_style.dart';
 import 'package:lowkey/UI/homepage_list.dart';
 import 'package:lowkey/UI/homepage_swipe.dart';
 import 'package:lowkey/UI/login.dart';
 import 'package:lowkey/UI/search_businesses.dart';
-import 'global.dart' as global;
-import 'page_transition.dart';
+import 'package:lowkey/UI/components/global.dart' as global;
+import 'package:lowkey/UI/components/page_transition.dart';
 
 class Sidebar extends StatelessWidget {
   const Sidebar({Key? key}) : super(key: key);

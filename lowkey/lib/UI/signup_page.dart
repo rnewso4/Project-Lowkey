@@ -1,10 +1,10 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lowkey/components/logo_style.dart';
+import 'package:lowkey/UI/components/logo_style.dart';
 import 'package:lowkey/UI/create_business_page.dart';
 //import 'package:lowkey/forgot_password.dart';
-import '../components/page_transition.dart';
+import 'package:lowkey/UI/components/page_transition.dart';
 import 'homepage_list.dart';
 
 final _formKey = GlobalKey<FormState>();
