@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'components/businesses.dart';
+import '../components/businesses.dart';
 import 'create_new.dart';
-import 'components/business_comps.dart';
-import 'components/bottom_navbar.dart';
-import 'components/sidebar.dart';
+import '../components/business_comps.dart';
+import '../components/bottom_navbar.dart';
+import '../components/sidebar.dart';
 
 bool isEmpty = true;
 

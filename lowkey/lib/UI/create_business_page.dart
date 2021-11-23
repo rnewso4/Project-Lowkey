@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/cupertino.dart';
-
-import 'create_new.dart';
+import '../UI/create_new.dart';
 
 final List<Color> _color = [
   const Color(0xff794016),
@@ -143,6 +142,6 @@ categories(int index) {
 onSubmit(BuildContext context) {
    if (_formKey.currentState!.validate()) {
      Navigator.push( context, 
-      MaterialPageRoute(builder: (context) => const CreateNew(hasDeals: false)));
+      MaterialPageRoute(builder: (context) => const CreateNew()));
    }
 }
