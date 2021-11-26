@@ -11,7 +11,7 @@ class Utilities {
 
   bool checkCustomerLogin(String email, String password) {
     List<Customer> availableCustomerAccounts =
-        getCurrentRegisterCustomerAccounts();
+        getCurrentRegisteredCustomerAccounts();
 
     for (int i = 0; i < availableCustomerAccounts.length; i++) {
       if (availableCustomerAccounts[i].getEmail() == email &&
@@ -24,7 +24,7 @@ class Utilities {
 
   bool checkManagerLogin(String email, String password) {
     List<Manager> availableManagerAccounts =
-        getCurrentRegisterManagerAccounts();
+        getCurrentRegisteredManagerAccounts();
 
     for (int i = 0; i < availableManagerAccounts.length; i++) {
       if (availableManagerAccounts[i].getEmail() == email &&
@@ -36,7 +36,7 @@ class Utilities {
   }
 
   List<Business> generateDemoBusiness() {
-    List<Manager> managerAccounts = getCurrentRegisterManagerAccounts();
+    List<Manager> managerAccounts = getCurrentRegisteredManagerAccounts();
 
     List<Business> retVal = [];
     retVal.add(Business(
@@ -137,7 +137,7 @@ class Utilities {
     return retVal;
   }
 
-  List<Customer> getCurrentRegisterCustomerAccounts() {
+  List<Customer> getCurrentRegisteredCustomerAccounts() {
     List<Customer> retVal = [];
     retVal.add(Customer("user@lsu.edu", "Lowkey8"));
     retVal.add(Customer("customer@lsu.edu", "Lowkey8"));
@@ -145,7 +145,7 @@ class Utilities {
     return retVal;
   }
 
-  List<Manager> getCurrentRegisterManagerAccounts() {
+  List<Manager> getCurrentRegisteredManagerAccounts() {
     List<Manager> retVal = [];
     retVal.add(Manager("admin@lsu.edu", "123abc", "(225)123-4567", "2021"));
 
