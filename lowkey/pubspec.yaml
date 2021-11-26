@@ -33,6 +33,8 @@ flutter:
     - lib/UI/assets/fizz.png
     - lib/UI/assets/pizza.png
     - lib/UI/assets/starbucks.jpg
+    - lib/assets/officiallogo.png
+    - lib/assets/officiallogo2.png
 
   fonts:
     - family: MyFlutterApp
