@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:lowkey/UI/deals_page.dart';
-
+import 'global.dart';
 import 'app_icons.dart';
+
+int numOfComments = 3;
 
 class DealsComponent extends StatelessWidget {
   const DealsComponent({ Key? key }) : super(key: key);
@@ -9,7 +11,7 @@ class DealsComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(8, 20, 8, 8),
+      padding: const EdgeInsets.fromLTRB(15, 10, 8, 8),
       child: Column(
         children: <Widget> [
           const Align(
@@ -24,7 +26,7 @@ class DealsComponent extends StatelessWidget {
             margin: const EdgeInsets.only(top: 20, bottom: 30),
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: 7,
+              itemCount: numOfDeals,
               itemBuilder: (context, index) => dealsCard(context))),
           const Align(
             alignment: Alignment.topLeft,
@@ -58,8 +60,8 @@ class DealsComponent extends StatelessWidget {
           ListView.builder(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            itemCount: 3,
-            itemBuilder: (context, index) => reviews()
+            itemCount: numOfComments,
+            itemBuilder: (context, index) => reviews(index)
           )
         ]
       )
@@ -68,71 +70,95 @@ class DealsComponent extends StatelessWidget {
 }
 
 dealsCard(BuildContext context) {
-  return GestureDetector(
-    onTap: () {
-      Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const DealsPage()));
-    },
-    child: Container(
-      margin: const EdgeInsets.only(right: 30),
-      width: 200,
-      child: Card(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(8, 8, 2, 6),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              const Text(
-                '\$5 off every coffee purchased before noon. Please see our terms and conditions for more info',
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
+  return Stack(
+    children: <Widget>[
+      GestureDetector(
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const DealsPage()));
+        },
+        child: Container(
+          margin: const EdgeInsets.only(right: 30),
+          width: 200,
+          child: Card(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(8, 8, 2, 6),
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const <Widget>[
-                  Text(
-                    'Posted 23 hours ago',
-                    style: TextStyle(
-                      fontSize: 11,
-                      color: Color(0xff8E8E8E))),
-                  Icon(MyFlutterApp.dollar, size: 20, color: Colors.grey),
+                children: <Widget>[
+                  const Text(
+                    '\$5 off every coffee purchased before noon. Please see our terms and conditions for more info',
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const <Widget>[
+                      Text(
+                        'Posted 23 hours ago',
+                        style: TextStyle(
+                          fontSize: 11,
+                          color: Color(0xff8E8E8E))),
+                      Icon(MyFlutterApp.dollar, size: 20, color: Colors.grey),
+                    ]
+                  )
                 ]
-              )
-            ]
+              ),
+            )
           ),
-        )
+        ),
       ),
+      if(deleteCards) deleteIcon()
+    ]
+  );
+}
+
+Widget deleteIcon() {
+  return Container(
+    margin: const EdgeInsets.only(left: 145),
+    child: RawMaterialButton(
+      onPressed: () {
+      },
+      elevation: 2.0,
+      fillColor: Colors.white,
+      child: const Icon(Icons.close, size: 25.0, color: Colors.red),
+      shape: const CircleBorder(),
     ),
   );
 }
 
 newsCard() {
-  return Container(
-    margin: const EdgeInsets.only(right: 30),
-    width: 200,
-    child: Card(
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(8, 8, 2, 6),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            const Text(
-              'News Stories. Please see our terms and conditions for more info',
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
+  return Stack(
+    children: <Widget>[
+      Container(
+        margin: const EdgeInsets.only(right: 30),
+        width: 200,
+        child: Card(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(8, 8, 2, 6),
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const <Widget>[
-                Text(
-                  'Posted 23 hours ago',
-                  style: TextStyle(
-                    fontSize: 11,
-                    color: Color(0xff8E8E8E))),
-                Icon(MyFlutterApp.dollar, size: 20, color: Colors.grey),
+              children: <Widget>[
+                const Text(
+                  'News Stories. Please see our terms and conditions for more info',
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const <Widget>[
+                    Text(
+                      'Posted 23 hours ago',
+                      style: TextStyle(
+                        fontSize: 11,
+                        color: Color(0xff8E8E8E))),
+                    Icon(MyFlutterApp.dollar, size: 20, color: Colors.grey),
+                  ]
+                )
               ]
-            )
-          ]
+            ),
+          )
         ),
-      )
-    ),
+      ),
+      if (deleteCards) deleteIcon()
+    ],
   );
 }
 
@@ -143,9 +169,10 @@ categoryTextStyle() {
   );
 }
 
-reviews() {
+reviews(int index) {
 return Container(
-    margin: const EdgeInsets.only(top: 10),
+    margin: (index == (numOfComments-1)) ? const EdgeInsets.only(top: 10, bottom: 40) 
+    : const EdgeInsets.only(top: 10),
     child: Column(
       children: [
         Row(
@@ -156,7 +183,7 @@ return Container(
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 8),
           child: Text(stringL),),
-        const Divider(thickness: 3,)
+        const Divider(thickness: 2,)
       ],
     )
   );

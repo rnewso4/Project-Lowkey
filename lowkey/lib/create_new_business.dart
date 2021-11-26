@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'components/app_icons.dart';
+import 'UI/components/app_icons.dart';
 
 final List<String> _buttonText = [
   'Add new event',

@@ -39,6 +39,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.only(top: 100),
@@ -129,7 +130,7 @@ class _LoginState extends State<Login> {
             GestureDetector(
               onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const ForgotPassword())),
               child: Container(
-                padding: const EdgeInsets.only(top: 30, right: 50),
+                padding: const EdgeInsets.only(top: 50, right: 50),
                 alignment: Alignment.topRight,
                 child: const Text(
                   'Forgot your password?',

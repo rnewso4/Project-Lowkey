@@ -36,6 +36,7 @@ flutter:
     - lib/assets/starbucks.jpg
     - lib/assets/officiallogo.png
     - lib/assets/officiallogo2.png
+    - lib/assets/playerverse_logo.png
   uses-material-design: true
 
   fonts:

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:lowkey/UI/analytics_page.dart';
-import 'package:lowkey/UI/business_page.dart';
 import 'package:lowkey/UI/components/logo_style.dart';
 import 'package:lowkey/UI/homepage_list.dart';
 import 'package:lowkey/UI/homepage_swipe.dart';
 import 'package:lowkey/UI/login.dart';
 import 'package:lowkey/UI/search_businesses.dart';
+import '../your_page.dart';
 import 'global.dart' as global;
 import 'page_transition.dart';
 
@@ -77,7 +77,7 @@ Widget tiles(BuildContext context, int index) {
     icons.insert(0, Icons.dashboard);
     icons.insert(1, Icons.business);
     onClick.insert(0, const AnalyticsPage());
-    onClick.insert(1, const BusinessPage(isOwner: true));
+    onClick.insert(1, const YourPage());
   }
 
   return GestureDetector(

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lowkey/UI/analytics_page.dart';
+import 'package:lowkey/UI/your_page.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'UI/login.dart';
 
@@ -13,11 +15,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return OverlaySupport(
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Lowkey',
         theme: ThemeData(
           primarySwatch: Colors.grey,
         ),
-        home: const Login()
+        home: const YourPage()
       ),
     );
   }

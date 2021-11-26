@@ -145,6 +145,6 @@ categories(int index) {
 onSubmit(BuildContext context, GlobalKey<FormState> _formKey) {
    if (_formKey.currentState!.validate()) {
      Navigator.push( context, 
-      MaterialPageRoute(builder: (context) => const CreateNew(/*hasDeals: false*/)));
+      MaterialPageRoute(builder: (context) => const CreateNew(hasDeals: false)));
    }
 }

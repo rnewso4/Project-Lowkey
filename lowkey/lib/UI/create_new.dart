@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:lowkey/UI/your_page.dart';
+import 'components/page_transition.dart';
 
 final List<Color> _color = [
   const Color(0xff794016),
@@ -10,7 +12,8 @@ final List<Color> _color = [
 ];
 
 class CreateNew extends StatefulWidget {
-  const CreateNew({Key? key}) : super(key: key);
+  final bool? hasDeals;
+  const CreateNew({Key? key, this.hasDeals}) : super(key: key);
   @override
   _CreateNewState createState() => _CreateNewState();
 }
@@ -105,7 +108,9 @@ class _CreateNewState extends State<CreateNew> {
                   maxLines: null,
                   keyboardType: TextInputType.text)),
               InkWell(
-                onTap: () => Navigator.pop(context),
+                onTap: (widget.hasDeals == false) ? 
+                () => Navigator.push( context, SlideRightRoute(page: const YourPage())) 
+                : () => Navigator.pop(context),
                 child: Container(
                   height: 40,
                   width: 125,
