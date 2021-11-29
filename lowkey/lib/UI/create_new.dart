@@ -38,7 +38,7 @@ class _CreateNewState extends State<CreateNew> {
               IconButton(
                 onPressed: () => Navigator.pop(context),
                 icon: const Icon(Icons.arrow_back_ios)),
-              const Text('Pick a category for your deal',
+              const Text('Create a new deal',
                 style: TextStyle(
                   fontSize: 20,
                   fontFamily: 'helvetica',

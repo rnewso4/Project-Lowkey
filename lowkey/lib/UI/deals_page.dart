@@ -31,7 +31,7 @@ class _DealsPageState extends State<DealsPage> {
       appBar: AppBar(
         leading: GestureDetector(
           onTap:() => Navigator.pop(context),
-          child: const Icon(Icons.arrow_back_ios)),
+          child: const Icon(Icons.arrow_back_ios, color: Colors.white)),
         backgroundColor: Colors.transparent,
         elevation: 0),
       body: Stack(
@@ -64,7 +64,7 @@ class _DealsPageState extends State<DealsPage> {
                   Container(
                     padding: const EdgeInsets.only(left: 15, right: 15),
                     child: const Text(
-                      'Starbucks® Cold Brew sweetened with vanilla syrup and topped with a pumpkin cream cold foam and a dusting of pumpkin spice topping.',
+                      'Highland Coffee Cold Brew sweetened with vanilla syrup and topped with a pumpkin cream cold foam and a dusting of pumpkin spice topping.',
                       style: TextStyle(fontSize: 13))),
                   const SizedBox(height: 20),
                   Container(
@@ -76,7 +76,7 @@ class _DealsPageState extends State<DealsPage> {
                           'Posted 12 hours ago',
                           style: TextStyle(color: Color(0xff676666), fontSize: 12)),
                         Text(
-                          'Expires 10/29',
+                          'Expires 12/3',
                           style: TextStyle(
                             color: Color(0xff676666),
                             fontSize: 12))])),
@@ -97,7 +97,7 @@ class _DealsPageState extends State<DealsPage> {
                               fontSize: 12))]),
                       Row(
                         children: const <Widget>[
-                          Text('2K ',
+                          Text('3 ',
                             style: TextStyle(
                               color: Color(0xff676666),
                               fontWeight: FontWeight.bold,
@@ -110,7 +110,7 @@ class _DealsPageState extends State<DealsPage> {
                   Expanded(
                     child: ListView.separated(
                       padding: const EdgeInsets.fromLTRB(15, 0, 15, 15),
-                      itemCount: 7,
+                      itemCount: 3,
                       itemBuilder: (context, index) => comments(context, index),
                       separatorBuilder: (context, index) => const Divider(),
                     )
@@ -126,6 +126,10 @@ class _DealsPageState extends State<DealsPage> {
 }
 
 comments(context, index) {
+  List<String> userName = ['Haley', "Abby Smith", "Stacia Jackson"];
+  List<String> reviews = ['I actually LOVED it — and was surprised. At first I just tasted the cold brew, no pumpkin. If your straw is fully in the cup, you don’t taste the pumpkin at all — it’s literally just classic cold brew.',
+  "Here's the gist: It's pretty similar to that Vanilla Sweet Cream Cold Brew we all know and love, but with a pumpkin cream foam instead. They froth the vanilla sweet cream and toss in some pumpkin spice for the effect. There's some pumpkin spice.",
+  "So what should you order? It really depends on whether you want to go all in on the pumpkin flavor and are watching your macros or not. But all said and done, the Pumpkin Cream Cold Brew doesn't seem likely to unseat the PSL."];
   return SizedBox(
     height: 105,
     child: Row(
@@ -134,15 +138,12 @@ comments(context, index) {
           flex: 8,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const <Widget>[
-              Text('Mommy Blogger 216', style: TextStyle(fontWeight: FontWeight.bold)),
-              SizedBox(height: 5),
-              Text(
-                'Lorem ipsum dolor sit amet, consectetuer adipi elit. '
-                'Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis '
-                'parturient montes, nascetur ridiculus mus. Donec quam fe',
-                style: TextStyle(fontSize: 13))])),
-        Expanded(
+            children: <Widget>[
+              Text(userName[index], style: const TextStyle(fontWeight: FontWeight.bold)),
+              const SizedBox(height: 5),
+              Text( reviews[index],
+                style: const TextStyle(fontSize: 13))])),
+        /*Expanded(
           flex: 1,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -160,7 +161,7 @@ comments(context, index) {
               )
             ]
           )
-        )
+        )*/
       ]
     )
   );

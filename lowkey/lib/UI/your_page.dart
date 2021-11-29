@@ -43,7 +43,8 @@ class _YourPageState extends State<YourPage> {
                     pageDetails(1),
                     pageDetails(2)]),
                 const Divider(thickness: 2, height: 30),
-                const DealsComponent()])),
+                const DealsComponent(),
+                ])),
           BottomNavbar(
             iconRight: Icons.add,
             backgroundColor: Colors.white,

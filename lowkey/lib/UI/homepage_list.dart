@@ -67,12 +67,12 @@ class _HomepageListState extends State<HomepageList> {
 
 TextStyle dealsAndNewsStyle() => const TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black);
 
-ListTile tilesForDeals(String name, String logo, String description, context) {
+ListTile tilesForDeals(String name, String logo, String description, BuildContext context, int index) {
   return ListTile(
     leading: Image(image: AssetImage(logo), width: 70,),
     title: Text(name),
     subtitle: Text(description),
-    trailing: const Icon(Icons.star_outline),
+    trailing: (index == 0 || index == 1) ? const Icon(Icons.star, color: Colors.amber) : const Icon(Icons.star_outline),
     onTap: () {
       Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const DealsPage()));
     }
@@ -93,7 +93,7 @@ Widget dealsView() {
     shrinkWrap: true,
     padding: const EdgeInsets.all(8),
     itemCount: businesses.length,
-    itemBuilder:(context, index) => tilesForDeals(businesses[index].getName(), businesses[index].getLogo(), businesses[index].getDescription(), context),
+    itemBuilder:(context, index) => tilesForDeals(businesses[index].getName(), businesses[index].getLogo(), businesses[index].getDescription(), context, index),
     separatorBuilder: (context, index) => const SizedBox(height: 20)
   );
 }
@@ -110,14 +110,14 @@ Widget newsView() {
 
   List<Business> businesses = <Business>[
     Business('The Revelry', '\$5 off every coffee purchased before noon', 'lib/assets/rev.jpg'),
-    Business('The Revelry', 'Our pumpkin spice pizza is back at high demand', 'lib/assets/rev.jpg'),
-    Business('The Revelry', 'Students get in free before midnight', 'lib/assets/rev.jpg'),
-    Business('Highland Coffee', '\$5 off every coffee purchased before noon', 'lib/assets/highland.png'),
-    Business('Highland Cofee', 'Our pumpkin spice latte is back at high demand', 'lib/assets/highland.png'),
     Business('Highland Coffee', 'Doja Cat will be performing live on Saturday', 'lib/assets/highland.png'),
+    Business('The Revelry', 'Our pumpkin spice pizza is back at high demand', 'lib/assets/rev.jpg'),
+    Business('Reginelli’s Pizzeria', 'Buy two, get a third one free every weekend', 'lib/assets/reg.jpeg'),
+    Business('Highland Cofee', 'Our pumpkin spice latte is back at high demand', 'lib/assets/highland.png'), 
+    Business('The Revelry', 'Students get in free before midnight', 'lib/assets/rev.jpg'),
+    Business('Highland Coffee', '\$5 off every coffee purchased before noon', 'lib/assets/highland.png'),   
     Business('Reginelli’s Pizzeria', '\$5 off every coffee purchased before noon', 'lib/assets/reg.jpeg'),
     Business('Reginelli’s Pizzeria', 'Our pumpkin spice pizza is back at high demand', 'lib/assets/reg.jpeg'),
-    Business('Reginelli’s Pizzeria', 'Buy two, get a third one free every weekend', 'lib/assets/reg.jpeg'),
   ];
 
   

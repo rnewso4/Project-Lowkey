@@ -62,11 +62,23 @@ class DealsComponent extends StatelessWidget {
                         color: Colors.grey)))
                   ])]),
           ),
-          ListView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: numOfComments,
-            itemBuilder: (context, index) => reviews(index)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5.0),
+            child: ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: numOfComments,
+              itemBuilder: (context, index) => reviews(index)
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.only(bottom: 40),
+            alignment: Alignment.topRight,
+            child: TextButton(onPressed: () {}, 
+              child: const Text(
+                'View more',
+                style: TextStyle(color: Colors.black)
+                )),
           )
         ]
       )
@@ -188,9 +200,8 @@ reviews(int index) {
   List<String> usernames = ['Mike Johnson', 'Kevin Smith', 'Ryan Wilson'];
   List <String> datePosted = ['Oct 28', 'Nov 3', 'Nov 24'];
   List<double> rating = [4, 2.5, 3];
-return Container(
-    margin: (index == (numOfComments-1)) ? const EdgeInsets.only(top: 10, bottom: 40) 
-    : const EdgeInsets.only(top: 10),
+  return Container(
+    margin: const EdgeInsets.only(top: 10),
     child: Column(
       children: [
         Row(
