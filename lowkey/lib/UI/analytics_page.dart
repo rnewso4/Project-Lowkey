@@ -76,7 +76,7 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
           dealStatistics('Seen by', 26.5, '2.5K'),
           dealStatistics('Comments', 5, '132'),
           dealStatistics('Favorites', 10.3, '598'),
-          const Divider(thickness: 1, height: 30, indent: 10, endIndent: 10, color: Color(0xff6e6e6e)),
+          const Divider(thickness: 1, height: 30, color: Color(0xffb0b0b0)),
           Container(
             margin: const EdgeInsets.only(top: 10),
             height: 40,

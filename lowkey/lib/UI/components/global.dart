@@ -4,4 +4,4 @@ int swipeIndex = 0;
 int swipePageColorIndex = 0;
 bool isManager = false;
 bool deleteCards = false;
-int numOfDeals = 3;
+int numOfDeals = 4;

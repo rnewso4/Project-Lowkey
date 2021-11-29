@@ -43,17 +43,7 @@ class _CreateNewState extends State<CreateNew> {
                   fontSize: 20,
                   fontFamily: 'helvetica',
                   color: Colors.black))]),
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 20),
-              height: 100,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 3,
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () => updateColor(index),
-                    child: categories(index));
-                })),
+            const SizedBox(height: 50),
             Column( children: <Widget>[
               Container(
                 height: 100,

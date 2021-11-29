@@ -17,6 +17,8 @@ dependencies:
   email_validator: ^2.0.1
   overlay_support: ^1.2.1
   fl_chart: ^0.40.2
+  url_launcher: ^6.0.15
+  flutter_rating_bar: ^4.0.0
 
 dev_dependencies:
   flutter_test:

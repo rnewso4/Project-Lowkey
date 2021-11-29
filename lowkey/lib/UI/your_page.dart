@@ -42,13 +42,14 @@ class _YourPageState extends State<YourPage> {
                     pageDetails(0),
                     pageDetails(1),
                     pageDetails(2)]),
-                const Divider(thickness: 2, height: 30, indent: 20, endIndent: 20),
+                const Divider(thickness: 2, height: 30),
                 const DealsComponent()])),
           BottomNavbar(
-            iconRight: Icons.edit,
+            iconRight: Icons.add,
             backgroundColor: Colors.white,
             onMenuPressed: () => _scaffoldState.currentState?.openDrawer(),
-            onIconRightPressed: () => onPressed(),
+            onIconRightPressed: () => {Navigator.push( context, 
+      MaterialPageRoute(builder: (context) => const CreateNew()))},
           )
         ]
       )
@@ -117,7 +118,7 @@ header(BuildContext context) {
             )
           ]
         ),
-        const Icon(Icons.notifications_active, size: 30)
+        //const Icon(Icons.notifications_active, size: 30)
       ]
     )
   );
