@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import '../UI/components/businesses.dart';
 import 'create_new.dart';
 import '../UI/components/business_comps.dart';
@@ -36,26 +35,13 @@ class _BusinessPageState extends State<BusinessPage> {
             child: ListView(
               children: <Widget>[
                 header(context),
-                SizedBox(
-                  height: 30,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: <Widget>[
-                      pageDetails(0),
-                      pageDetails(1),
-                      pageDetails(2),
-                      Container(
-                        margin: const EdgeInsets.only(left: 20),
-                        width: 70,
-                        height: 30,
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(30)),
-                          color: Colors.black),
-                        child: const Center(
-                            child: Text('Follow',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold))))])),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    pageDetails(0),
+                    pageDetails(1),
+                    pageDetails(2)]),
                 const Divider(thickness: 2, height: 30),
                 const DealsComponent()])),
           BottomNavbar(
@@ -72,7 +58,7 @@ class _BusinessPageState extends State<BusinessPage> {
 }
 
  List<Business> businesses = <Business>[
-    Business('Starbucks', 'Doja Cat will be performing live on Saturday', 'lib/assets/highland.png'),
+    //Business('PlayerVerse', '\$5 off every coffee purchased before noon', 'lib/assets/playerverse_logo.png'),
     Business('Reginelli’s Pizzeria', 'Buy two, get a third one free every weekend', 'lib/assets/reg.jpeg'),
   ];
 
@@ -100,7 +86,7 @@ businessDetails(index) {
 
 header(BuildContext context) {
   return Padding(
-    padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+    padding: const EdgeInsets.fromLTRB(10, 0, 10, 20),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
@@ -113,7 +99,7 @@ header(BuildContext context) {
                 image: AssetImage(businesses[0].getLogo()))),
             Container(
               height: 60,
-              padding: const EdgeInsets.only(left: 10),
+              padding: const EdgeInsets.only(left: 5),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[

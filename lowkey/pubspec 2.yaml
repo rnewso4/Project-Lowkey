@@ -1,0 +1,47 @@
+name: lowkey
+description: A new Flutter project.
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  dots_indicator: ^2.0.0
+  google_fonts: ^2.1.0
+  email_validator: ^2.0.1
+  overlay_support: ^1.2.1
+  fl_chart: ^0.40.2
+  url_launcher: ^6.0.15
+  flutter_rating_bar: ^4.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^1.0.0
+
+flutter:
+  assets:
+    - lib/assets/highland.png
+    - lib/assets/reg.jpeg
+    - lib/assets/rev.jpg
+    - lib/assets/logo.png
+    - lib/assets/coffee.png
+    - lib/assets/fizz.png
+    - lib/assets/pizza.png
+    - lib/assets/starbucks.jpg
+    - lib/assets/officiallogo.png
+    - lib/assets/officiallogo2.png
+    - lib/assets/playerverse_logo.png
+  uses-material-design: true
+
+  fonts:
+    - family: MyFlutterApp
+      fonts:
+      - asset: lib/assets/fonts/MyFlutterApp.ttf

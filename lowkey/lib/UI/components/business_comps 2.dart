@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:lowkey/UI/deals_page.dart';
 import 'global.dart';
 import 'app_icons.dart';
@@ -28,7 +29,7 @@ class DealsComponent extends StatelessWidget {
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: numOfDeals,
-              itemBuilder: (context, index) => dealsCard(context))),
+              itemBuilder: (context, index) => dealsCard(context, index))),
           const Align(
             alignment: Alignment.topLeft,
             child: Text(
@@ -43,26 +44,41 @@ class DealsComponent extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: 2,
               itemBuilder: (context, index) => newsCard(index))) ,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text('Reviews', style: categoryTextStyle()),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: const <Widget>[
-                  Text('4.3', style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.w700)),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 3),
-                    child: Text(' out of 5', style: TextStyle(
-                      color: Colors.grey)))
-                ])]),
-          ListView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: numOfComments,
-            itemBuilder: (context, index) => reviews(index)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text('Reviews', style: categoryTextStyle()),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: const <Widget>[
+                    Text('3.2', style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.w700)),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 3),
+                      child: Text(' out of 5', style: TextStyle(
+                        color: Colors.grey)))
+                  ])]),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5.0),
+            child: ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: numOfComments,
+              itemBuilder: (context, index) => reviews(index)
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.only(bottom: 40),
+            alignment: Alignment.topRight,
+            child: TextButton(onPressed: () {}, 
+              child: const Text(
+                'View more',
+                style: TextStyle(color: Colors.black)
+                )),
           )
         ]
       )
@@ -70,7 +86,9 @@ class DealsComponent extends StatelessWidget {
   }
 }
 
-dealsCard(BuildContext context) {
+dealsCard(BuildContext context, int index) {
+  List<String> deals = ["Horizon Zero Dawn for \$20.04", "Psychonauts 2 for \$38.49", "Cyberpunk 2077 for \$24.99", "Pillars of Eternity II: Deadfire for \$11.29"];
+  List<String> datePosted = ['23 hours', '2 days', '6 days', '1 week'];
   return Stack(
     children: <Widget>[
       GestureDetector(
@@ -86,19 +104,20 @@ dealsCard(BuildContext context) {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  const Text(
-                    '\$5 off every coffee purchased before noon. Please see our terms and conditions for more info',
+                  Text(
+                    deals[index],
+                    style: const TextStyle(fontSize: 17)
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const <Widget>[
+                    children: <Widget>[
                       Text(
-                        'Posted 23 hours ago',
-                        style: TextStyle(
+                        'Posted ${datePosted[index]} ago',
+                        style: const TextStyle(
                           fontSize: 11,
                           color: Color(0xff8E8E8E))),
-                      Icon(MyFlutterApp.dollar, size: 20, color: Colors.grey),
+                      const Icon(MyFlutterApp.dollar, size: 20, color: Colors.grey),
                     ]
                   )
                 ]
@@ -149,6 +168,7 @@ newsCard(int index) {
                 children: <Widget>[
                   Text(
                     newsStories[index],
+                    style: const TextStyle(fontSize: 17)
                   ),
                   Align(
                     alignment: Alignment.centerLeft,
@@ -179,20 +199,51 @@ categoryTextStyle() {
 reviews(int index) {
   List<String> usernames = ['Mike Johnson', 'Kevin Smith', 'Ryan Wilson'];
   List <String> datePosted = ['Oct 28', 'Nov 3', 'Nov 24'];
-return Container(
-    margin: (index == (numOfComments-1)) ? const EdgeInsets.only(top: 10, bottom: 40) 
-    : const EdgeInsets.only(top: 10),
+  List<double> rating = [4, 2.5, 3];
+  return Container(
+    margin: const EdgeInsets.only(top: 10),
     child: Column(
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Text(usernames[index], style: const TextStyle(fontWeight: FontWeight.bold)),
+            RatingBar.builder(
+              initialRating: rating[index],
+              minRating: 1,
+              direction: Axis.horizontal,
+              allowHalfRating: true,
+              itemCount: 5,
+              itemSize: 20,
+              itemPadding: const EdgeInsets.only(right: 3.0),
+              itemBuilder: (context, _) => const Icon( Icons.star, color: Colors.amber ),
+              onRatingUpdate: (rating) { },
+            ),
             Text(datePosted[index])]),
+        /*Container(
+          alignment: Alignment.topLeft,
+          padding: EdgeInsets.only(top: 8),
+          child: RatingBar.builder(
+           initialRating: 3,
+           minRating: 1,
+           direction: Axis.horizontal,
+           allowHalfRating: true,
+           itemCount: 5,
+           itemSize: 20,
+           itemPadding: EdgeInsets.only(right: 3.0),
+           itemBuilder: (context, _) => Icon(
+             Icons.star,
+             color: Colors.amber,
+           ),
+           onRatingUpdate: (rating) {
+             print(rating);
+           },
+          ),
+        ),*/
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 8),
           child: Text(stringL[index]),),
-        const Divider(thickness: 2,)
+        if (index != 2) const Divider(thickness: 2,)
       ],
     )
   );
