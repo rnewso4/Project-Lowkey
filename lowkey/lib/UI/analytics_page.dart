@@ -54,7 +54,7 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
                 //topCards('Active Deals', 5),
-                topCards('Active Deals', 5),
+                topCards('Active Deals', 4),
                 topCards('New Followers', 71),
                 topCards('Page Visits', 873)])),
          //const Divider(thickness: 1, height: 30, indent: 10, endIndent: 10, color: Color(0xff303030)),
@@ -71,7 +71,7 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
             alignment: Alignment.topLeft,
             child: const Text(
               'Buy one pre-owned game, get a 2nd for 50% off',
-              style: TextStyle(decoration: TextDecoration.underline)
+              //style: TextStyle(decoration: TextDecoration.underline)
               )),
           dealStatistics('Seen by', 26.5, '2.5K'),
           dealStatistics('Comments', 5, '132'),
